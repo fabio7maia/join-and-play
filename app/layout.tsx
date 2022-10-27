@@ -8,8 +8,9 @@ export default async function RootLayout({ children, ...props }: { children: Rea
 				<title>Join and Play</title>
 				<link rel="icon" href="/favicon.ico" />
 			</head>
-			<body>
-				<SessionProvider session={(props as any).session}>{children}</SessionProvider>
+			<body> 
+				{/*<SessionProvider session={(props as any).session}>{children}</SessionProvider>*/}
+                                {children}
 			</body>
 		</html>
 	);
