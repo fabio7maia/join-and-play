@@ -1,4 +1,6 @@
 import { SessionProvider } from 'next-auth/react';
+import 'normalize.css';
+
 import '../styles/globals.css';
 
 export default async function RootLayout({ children, ...props }: { children: React.ReactNode }) {
@@ -8,9 +10,9 @@ export default async function RootLayout({ children, ...props }: { children: Rea
 				<title>Join and Play</title>
 				<link rel="icon" href="/favicon.ico" />
 			</head>
-			<body> 
+			<body>
 				{/*<SessionProvider session={(props as any).session}>{children}</SessionProvider>*/}
-                                {children}
+				{children}
 			</body>
 		</html>
 	);
