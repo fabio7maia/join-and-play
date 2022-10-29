@@ -8,8 +8,8 @@ This is a source code of Join and Play website.
 [X] [NextAuth] (https://next-auth.js.org)
 [X] [Tailwind css] (https://tailwindcss.com)
 [X] [daisyUI] (https://daisyui.com)
-
-and much more ...
+[X] [husky] (https://github.com/typicode/husky)
+[X] much more ...
 
 # Folder structure
 
