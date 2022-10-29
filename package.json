@@ -12,9 +12,8 @@
 		"prettier-format-all": "prettier --write \"**/*.{json,ts,tsx}\"",
 		"lint:all": "npm run lint:errors && npm run spell:check",
 		"spell:check": "cspell \"**/*.{ts,tsx}\"",
-		"jest": "jest --coverage --verbose --color",
-		"test": "node scripts/test.js \"--watchAll=false\" \"--forceExit\"",
-		"test:coverage": "node scripts/test.js \"--coverage\" \"--watchAll=false\" \"--silent\" \"--forceExit\"",
+		"test": "jest \"--watchAll=false\" \"--forceExit\"",
+		"test:coverage": "jest \"--coverage\" \"--watchAll=false\" \"--silent\" \"--forceExit\"",
 		"prepare": "husky install",
 		"git:pre-commit": "lint-staged",
 		"git:pre-push": "npm run build && npm run test:coverage"
