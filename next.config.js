@@ -4,6 +4,8 @@ const nextConfig = {
 	swcMinify: true,
 	experimental: {
 		appDir: true,
+		newNextLinkBehavior: true,
+		serverComponentsExternalPackages: ['prisma'],
 	},
 };
 
