@@ -2,13 +2,13 @@ This is a source code of Join and Play website.
 
 # Features
 
--   [x] [Nextjs 13] (https://nextjs.org)
--   [x] [Prisma] (https://www.prisma.io)
--   [x] [tRPC] (https://trpc.io)
--   [x] [NextAuth] (https://next-auth.js.org)
--   [x] [Tailwind css] (https://tailwindcss.com)
--   [x] [daisyUI] (https://daisyui.com)
--   [x] [husky] (https://github.com/typicode/husky)
+-   [x] Nextjs 13 (https://nextjs.org)
+-   [x] Prisma (https://www.prisma.io)
+-   [x] tRPC (https://trpc.io)
+-   [x] NextAuth.js (https://next-auth.js.org)
+-   [x] Tailwind css (https://tailwindcss.com)
+-   [x] daisyUI (https://daisyui.com)
+-   [x] husky (https://github.com/typicode/husky)
 -   [x] much more ...
 
 # Folder structure
