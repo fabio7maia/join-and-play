@@ -5,7 +5,7 @@ import '../styles/globals.css';
 
 export default async function RootLayout({ children, ...props }: { children: React.ReactNode }) {
 	return (
-		<html>
+		<html data-theme="light">
 			<head>
 				<title>Join and Play</title>
 				<link rel="icon" href="/favicon.ico" />

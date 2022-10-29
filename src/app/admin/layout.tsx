@@ -1,7 +1,5 @@
-import { signOut } from 'next-auth/react';
 import { headers } from 'next/headers';
-import { notFound, redirect } from 'next/navigation';
-import { Button } from 'react-xp-ui';
+import { redirect } from 'next/navigation';
 
 import { getSession } from '@lib';
 
@@ -19,8 +17,8 @@ export default async function AdminLayout({ children }: AdminLayoutProps) {
 	const user = await getUser();
 
 	if (!user) {
-		// return notFound();
-		return redirect('/login');
+		redirect('/login');
+		return;
 	}
 
 	return (
