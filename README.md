@@ -35,6 +35,10 @@ All source code of full stack app is inside src folder, except database model th
 
 ## Database
 
+### Create initial remote database
+
+-   npx prisma migrate dev
+
 ### Based on source code in prisma/schema.prisma, running prisma to propagate changes to remote database
 
 -   npx prisma migrate dev --name <filename-migration>
