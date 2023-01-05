@@ -1,19 +1,20 @@
-import { SessionProvider } from 'next-auth/react';
+import { TrpcClientProvider } from '../trpc/trpcClient';
 
 import 'normalize.css';
 import '../styles/globals.css';
 
 export default async function RootLayout({ children, ...props }: { children: React.ReactNode }) {
+	// const user = rsc.whoami.use();
+
 	return (
-		<html data-theme="light">
-			<head>
-				<title>Join and Play</title>
-				<link rel="icon" href="/favicon.ico" />
-			</head>
-			<body>
-				{/*<SessionProvider session={(props as any).session}>{children}</SessionProvider>*/}
-				{children}
-			</body>
-		</html>
+		<TrpcClientProvider>
+			<html data-theme="light">
+				<head>
+					<title>Join and Play</title>
+					<link rel="icon" href="/favicon.ico" />
+				</head>
+				<body>{children}</body>
+			</html>
+		</TrpcClientProvider>
 	);
 }

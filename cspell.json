@@ -13,7 +13,17 @@
 		"truetype",
 		"flexbox",
 		"Antd",
-		"flexboxgrid"
+		"flexboxgrid",
+		"superjson",
+		"tanstack",
+		"trpc",
+		"heroicons",
+		"healthcheck",
+		"iife",
+		"nextauth",
+		"Amarante",
+		"Canaveses",
+		"Padel"
 	],
 	"flagWords": [],
 	"ignorePaths": [

@@ -3,7 +3,6 @@ import { headers } from 'next/headers';
 import { ResourcesList } from '@components/resourcesList.client';
 import { UserLogout } from '@components/userLogout.client';
 import { db, getSession } from '@lib';
-import { trpcClient } from '@utils';
 
 export const dynamic = 'force-dynamic';
 
@@ -19,6 +18,7 @@ async function getGames() {
 
 export default async function AdminPage() {
 	const games = await getGames();
+	// const res = rsc.healthcheck.use();
 
 	return (
 		<>
