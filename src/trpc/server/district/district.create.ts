@@ -1,8 +1,9 @@
 import { z } from 'zod';
 
-import { db } from '@lib';
+import { db, redis } from '@lib';
 
 import { trpcApi } from '../trpc';
+import { redisConfig } from './district.list';
 
 export const districtCreate = trpcApi.privateProcedure
 	.input(
@@ -12,6 +13,8 @@ export const districtCreate = trpcApi.privateProcedure
 	)
 	.mutation(async ({ input }) => {
 		const { description } = input;
+
+		redis.del(redisConfig.key);
 
 		return db.district.create({
 			data: {

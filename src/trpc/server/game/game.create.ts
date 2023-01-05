@@ -12,10 +12,11 @@ export const gameCreate = trpcApi.privateProcedure
 			districtId: z.string(),
 			countyId: z.string(),
 			userId: z.string(),
+			typeId: z.string(),
 		})
 	)
 	.mutation(async ({ input }) => {
-		const { title, description, districtId, countyId, userId } = input;
+		const { title, description, districtId, countyId, userId, typeId } = input;
 
 		return db.game.create({
 			data: {
@@ -24,6 +25,7 @@ export const gameCreate = trpcApi.privateProcedure
 				districtId,
 				countyId,
 				userId,
+				typeId,
 			},
 		});
 	});
