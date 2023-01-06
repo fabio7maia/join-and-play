@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { db } from '@lib';
 
 import { trpcApi } from '../trpc';
+import { trpcUtils } from './district';
 
 export const districtUpdate = trpcApi.privateProcedure
 	.input(
@@ -12,14 +13,18 @@ export const districtUpdate = trpcApi.privateProcedure
 		})
 	)
 	.mutation(async ({ input }) => {
-		const { id, description } = input;
+		trpcUtils.update({
+			handler: () => {
+				const { id, description } = input;
 
-		return db.district.update({
-			where: {
-				id,
-			},
-			data: {
-				description,
+				return db.district.update({
+					where: {
+						id,
+					},
+					data: {
+						description,
+					},
+				});
 			},
 		});
 	});
