@@ -23,7 +23,7 @@ export default async function AdminLayout({ children }: AdminLayoutProps) {
 
 	return (
 		<>
-			<div className="flex h-screen overflow-hidden">
+			<div className="flex h-screen">
 				<aside className="flex-col border-r border-slate-100 bg-slate-50 py-4 md:flex lg:flex-shrink-0 lg:px-4 justify-between items-center">
 					<div className="dropdown dropdown-hover">
 						<label tabIndex={0} className="btn m-1">
