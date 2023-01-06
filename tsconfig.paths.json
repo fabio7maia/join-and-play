@@ -6,8 +6,9 @@
 			"@hooks": ["src/hooks"],
 			"@i18n": ["src/i18n"],
 			"@lib": ["src/lib"],
-			"@server": ["src/server"],
 			"@styles": ["src/styles"],
+			"@trpc-client": ["src/trpc/trpcClient"],
+			"@trpc-server": ["src/trpc/server-rsc/trpc"],
 			"@utils": ["src/utils"]
 		}
 	}

@@ -1,2 +1,2 @@
+export * from './logger';
 export * from './tailwind';
-export * from './trpc';

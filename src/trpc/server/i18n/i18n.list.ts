@@ -1,9 +1,10 @@
 import { z } from 'zod';
 
-import { i18n } from '../../i18n';
-import { trpcServer } from '../trpc';
+import { i18n } from '@i18n';
 
-export const i18nList = trpcServer.procedure
+import { trpcApi } from '../trpc';
+
+export const i18nList = trpcApi.publicProcedure
 	.input(
 		z.object({
 			language: z.string().nullish(),
