@@ -35,7 +35,8 @@
 		"src/packages/*/src/**/externalLibs/**",
 		"src/packages/*/src/**/i18n/**",
 		"src/packages/*/src/**/__stories/**",
-		"src/packages/*/src/**/*.stories.*"
+		"src/packages/*/src/**/*.stories.*",
+		"src/i18n/**"
 	],
 	"maxNumberOfProblems": 10000,
 	"allowCompoundWords": false,
