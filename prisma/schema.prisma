@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model Account {
@@ -84,5 +85,14 @@ model Game {
   countyId        String
   user            User          @relation(fields: [userId], references: [id])
   userId          String
+  type            GameType      @relation(fields: [typeId], references: [id])
+  typeId          String
+  createdAt       DateTime      @default(now())
+}
+
+model GameType {
+  id              String        @id @default(uuid())
+  description     String
+  games           Game[]
   createdAt       DateTime      @default(now())
 }

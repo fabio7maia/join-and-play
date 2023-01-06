@@ -1,6 +1,6 @@
 'use client';
 
-import { trpcClient } from '@utils';
+import { trpcClient } from '@trpc-client';
 
 export const ResourcesList = () => {
 	const i18n = trpcClient.i18n.list.useQuery({});
