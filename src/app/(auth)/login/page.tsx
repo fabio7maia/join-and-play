@@ -12,11 +12,5 @@ async function getSessionData() {
 export default async function LoginPage() {
 	const session = await getSessionData();
 
-	return (
-		<div>
-			<h1>Login Page</h1>
-			<UserAuthForm />
-			<code>{JSON.stringify(session, undefined, 2)}</code>
-		</div>
-	);
+	return <UserAuthForm session={session} />;
 }

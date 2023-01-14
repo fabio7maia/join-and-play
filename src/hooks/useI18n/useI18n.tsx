@@ -11,8 +11,17 @@ export const useI18n = () => {
 
 	return React.useMemo(
 		() => ({
-			t: (key: string) => {
-				return dot.pick(key, i18nList);
+			t: (key: string, objects?: Record<string, string>) => {
+				let value = dot.pick(key, i18nList);
+
+				if (objects) {
+					const valuesToChange = Object.keys(objects);
+
+					valuesToChange.forEach((v) => {
+						value = value.replace(`{{${v}}}`, objects[v]);
+					});
+				}
+				return value;
 			},
 		}),
 		[i18nList]
