@@ -3,23 +3,13 @@ import React from 'react';
 import 'normalize.css';
 import '../styles/globals.css';
 
-import Lottie from 'react-lottie';
-
-import animationData from '../assets/animations/balls-loading.json';
+import { Loading } from '@components/loading';
 
 export default function NotFound() {
-	const defaultOptions = {
-		loop: true,
-		autoplay: true,
-		animationData: animationData,
-		rendererSettings: {
-			preserveAspectRatio: 'xMidYMid slice',
-		},
-	};
 	return (
 		<div className="flex items-center justify-center w-screen h-screen bg-gradient-to-r from-blue-500">
 			<div className="flex flex-col items-center">
-				<Lottie options={defaultOptions} height={200} width={200} isClickToPauseDisabled />
+				<Loading />
 				<h1 className="font-bold text-blue-500 text-9xl">404</h1>
 
 				<h6 className="mb-2 text-2xl font-bold text-center text-gray-800 md:text-3xl">
