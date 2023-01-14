@@ -3,11 +3,12 @@ import { z } from 'zod';
 import { db } from '@lib';
 
 import { trpcApi } from '../trpc';
-import { trpcUtils } from './district';
+import { trpcUtils } from './county';
 
-export const districtCreate = trpcApi.privateProcedure
+export const countyCreate = trpcApi.privateProcedure
 	.input(
 		z.object({
+			districtId: z.string(),
 			description: z.string(),
 		})
 	)
@@ -15,10 +16,11 @@ export const districtCreate = trpcApi.privateProcedure
 		trpcUtils.create({
 			input,
 			handler: () => {
-				const { description } = input;
+				const { districtId, description } = input;
 
-				return db.district.create({
+				return db.county.create({
 					data: {
+						districtId,
 						description,
 					},
 				});

@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { db } from '@lib';
 
 import { trpcApi } from '../trpc';
+import { trpcUtils } from './game';
 
 export const gameCreate = trpcApi.privateProcedure
 	.input(
@@ -16,16 +17,21 @@ export const gameCreate = trpcApi.privateProcedure
 		})
 	)
 	.mutation(async ({ input }) => {
-		const { title, description, districtId, countyId, userId, typeId } = input;
+		trpcUtils.create({
+			input,
+			handler: () => {
+				const { title, description, districtId, countyId, userId, typeId } = input;
 
-		return db.game.create({
-			data: {
-				title,
-				description,
-				districtId,
-				countyId,
-				userId,
-				typeId,
+				return db.game.create({
+					data: {
+						title,
+						description,
+						districtId,
+						countyId,
+						userId,
+						typeId,
+					},
+				});
 			},
 		});
 	});

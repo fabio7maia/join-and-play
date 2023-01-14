@@ -1,0 +1,45 @@
+[
+  {
+    "_id": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "colName": "join-and-play",
+    "created": "2023-01-13T23:37:22.526Z",
+    "sortNum": 10000,
+    "folders": [
+      {
+        "_id": "83af8c1a-31e3-4f3e-93a4-0467bfe06321",
+        "name": "county",
+        "containerId": "",
+        "created": "2023-01-13T23:37:22.527Z",
+        "sortNum": 5000
+      },
+      {
+        "_id": "db922145-47ef-40b8-a966-953dc3e0d01e",
+        "name": "district",
+        "containerId": "",
+        "created": "2023-01-13T23:37:22.528Z",
+        "sortNum": 10000
+      },
+      {
+        "_id": "1cfca610-1478-4bf7-8000-ee0d9f2ba02f",
+        "name": "game",
+        "containerId": "",
+        "created": "2023-01-13T23:37:22.530Z",
+        "sortNum": 20000
+      },
+      {
+        "_id": "8f7dbd00-3709-4d98-85c9-70890ad4747c",
+        "name": "gameType",
+        "containerId": "",
+        "created": "2023-01-13T23:37:22.531Z",
+        "sortNum": 30000
+      },
+      {
+        "_id": "6632e1c0-4b3b-45e0-9463-43a5f64b28e5",
+        "name": "user",
+        "containerId": "",
+        "created": "2023-01-13T23:37:22.532Z",
+        "sortNum": 40000
+      }
+    ]
+  }
+]

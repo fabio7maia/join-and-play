@@ -3,9 +3,9 @@ import { z } from 'zod';
 import { db } from '@lib';
 
 import { trpcApi } from '../trpc';
-import { trpcUtils } from './district';
+import { trpcUtils } from './gameType';
 
-export const districtCreate = trpcApi.privateProcedure
+export const gameTypeCreate = trpcApi.privateProcedure
 	.input(
 		z.object({
 			description: z.string(),
@@ -17,7 +17,7 @@ export const districtCreate = trpcApi.privateProcedure
 			handler: () => {
 				const { description } = input;
 
-				return db.district.create({
+				return db.gameType.create({
 					data: {
 						description,
 					},

@@ -29,4 +29,18 @@ export interface I18n {
 	crud: {
 		district: I18nCrud;
 	};
+	login: {
+		welcomeMessage: string;
+		title: string;
+		subtitle: string;
+		email: string;
+		emailPlaceholder: string;
+		password: string;
+		passwordPlaceholder: string;
+		remember: string;
+		forgot: string;
+		signIn: string;
+		github: string;
+		google: string;
+	};
 }

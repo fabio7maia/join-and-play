@@ -1,0 +1,577 @@
+[
+  {
+    "_id": "91192f9a-8749-436b-8e8b-e29ac6f69f90",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "83af8c1a-31e3-4f3e-93a4-0467bfe06321",
+    "name": "county-create",
+    "url": "http://localhost:3000/api/trpc/county.create?batch=1",
+    "method": "POST",
+    "sortNum": 5000,
+    "created": "2023-01-13T23:37:22.528Z",
+    "modified": "2023-01-13T23:37:22.528Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "next-auth.session-token=8c0bcd55-6e12-49f1-8a89-0208cd1db7c7;"
+      }
+    ],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"0\": {\n    \"json\": {\n      \"districtId\": \"25947810-7db5-4794-a0fc-42e4d928e595\",\n      \"description\": \"Gafanha\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "8ef17b0b-4f7f-40b1-a0fe-d8f1c18edcf1",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "8f7dbd00-3709-4d98-85c9-70890ad4747c",
+    "name": "gameType-create",
+    "url": "http://localhost:3000/api/trpc/gameType.create?batch=1",
+    "method": "POST",
+    "sortNum": 5000,
+    "created": "2023-01-13T23:37:22.529Z",
+    "modified": "2023-01-13T23:37:22.529Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "next-auth.session-token=8c0bcd55-6e12-49f1-8a89-0208cd1db7c7;"
+      }
+    ],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"0\": {\n    \"json\": {\n      \"description\": \"Futsal 3\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "e8d4121d-309a-42b0-9044-ac00a2f30674",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "1cfca610-1478-4bf7-8000-ee0d9f2ba02f",
+    "name": "game-create",
+    "url": "http://localhost:3000/api/trpc/game.create?batch=1",
+    "method": "POST",
+    "sortNum": 5000,
+    "created": "2023-01-13T23:37:22.530Z",
+    "modified": "2023-01-14T00:19:45.043Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "next-auth.session-token=8c0bcd55-6e12-49f1-8a89-0208cd1db7c7;"
+      }
+    ],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"0\": {\n    \"json\": {\n      \"title\": \"Futsal é que é!\",\n\t\t\t\"description\": \"Joga sem parar e diverte-te :)\",\n\t\t\t\"districtId\": \"1baa1a23-f2a6-4fcd-b2d3-6bdeb1577c6e\",\n\t\t\t\"countyId\": \"926f95be-601b-48da-83de-b74f84849f09\",\n\t\t\t\"userId\": \"e6984d57-bbb0-4c83-b59b-57d07fe6dbfa\",\n\t\t\t\"typeId\": \"3eb040d0-367e-427f-a93f-f7ffaabf2056\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "01849db4-2f63-4ecb-b9fb-8052b39ae85d",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "6632e1c0-4b3b-45e0-9463-43a5f64b28e5",
+    "name": "user-create",
+    "url": "http://localhost:3000/api/trpc/user.create?batch=1",
+    "method": "POST",
+    "sortNum": 5000,
+    "created": "2023-01-13T23:37:22.531Z",
+    "modified": "2023-01-13T23:37:22.531Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "next-auth.session-token=8c0bcd55-6e12-49f1-8a89-0208cd1db7c7;"
+      }
+    ],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"0\": {\n    \"json\": {\n      \"name\": \"Fábio Maia\",\n      \"email\": \"fabio7maia@gmail.com\",\n      \"image\": \"http://images.com/avatar.jpg\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "5c0bfa45-d087-475b-9989-de734d97673d",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "83af8c1a-31e3-4f3e-93a4-0467bfe06321",
+    "name": "county-delete",
+    "url": "http://localhost:3000/api/trpc/county.delete?batch=1",
+    "method": "POST",
+    "sortNum": 7500,
+    "created": "2023-01-13T23:37:22.532Z",
+    "modified": "2023-01-13T23:37:22.532Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "next-auth.session-token=8c0bcd55-6e12-49f1-8a89-0208cd1db7c7;"
+      }
+    ],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"0\": {\n    \"json\": {\n      \"id\": \"a48083ce-c574-496e-adf4-b3a5be69da62\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "27622d93-c7c1-42d7-8e07-3de90523efc8",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "8f7dbd00-3709-4d98-85c9-70890ad4747c",
+    "name": "gameType-delete",
+    "url": "http://localhost:3000/api/trpc/gameType.delete?batch=1",
+    "method": "POST",
+    "sortNum": 7500,
+    "created": "2023-01-13T23:37:22.533Z",
+    "modified": "2023-01-13T23:37:22.533Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "next-auth.session-token=8c0bcd55-6e12-49f1-8a89-0208cd1db7c7;"
+      }
+    ],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"0\": {\n    \"json\": {\n      \"id\": \"b0df8431-bec0-4cc2-bc62-06af7237bfde\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "10a3da41-5cbb-4047-a2fc-f6d2ac3e72eb",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "1cfca610-1478-4bf7-8000-ee0d9f2ba02f",
+    "name": "game-delete",
+    "url": "http://localhost:3000/api/trpc/game.delete?batch=1",
+    "method": "POST",
+    "sortNum": 7500,
+    "created": "2023-01-13T23:37:22.534Z",
+    "modified": "2023-01-13T23:37:22.534Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "next-auth.session-token=8c0bcd55-6e12-49f1-8a89-0208cd1db7c7;"
+      }
+    ],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"0\": {\n    \"json\": {\n      \"id\": \"b179aba5-86a9-436b-bae4-3bcc3f2b9c63\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "4533153a-c951-4b32-8c73-60efed6158bf",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "6632e1c0-4b3b-45e0-9463-43a5f64b28e5",
+    "name": "user-delete",
+    "url": "http://localhost:3000/api/trpc/user.delete?batch=1",
+    "method": "POST",
+    "sortNum": 7500,
+    "created": "2023-01-13T23:37:22.535Z",
+    "modified": "2023-01-13T23:37:22.535Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "next-auth.session-token=8c0bcd55-6e12-49f1-8a89-0208cd1db7c7;"
+      }
+    ],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"0\": {\n    \"json\": {\n      \"id\": \"b179aba5-86a9-436b-bae4-3bcc3f2b9c63\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "9750c902-de3f-4c47-b099-7cd40befc0ef",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "83af8c1a-31e3-4f3e-93a4-0467bfe06321",
+    "name": "county-list",
+    "url": "http://localhost:3000/api/trpc/county.list?batch=1&input={\"0\":{\"json\":{\"district\": \"Porto\"}}}",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-01-13T23:37:22.537Z",
+    "modified": "2023-01-13T23:37:22.537Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      },
+      {
+        "name": "input",
+        "value": "{\"0\":{\"json\":{\"district\": \"Porto\"}}}",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "63392be1-73ae-4461-a420-ceec12bdb4b8",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "db922145-47ef-40b8-a966-953dc3e0d01e",
+    "name": "district-create",
+    "url": "http://localhost:3000/api/trpc/district.create?batch=1",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-01-13T23:37:22.538Z",
+    "modified": "2023-01-13T23:37:22.538Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "next-auth.session-token=8c0bcd55-6e12-49f1-8a89-0208cd1db7c7;"
+      }
+    ],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"0\": {\n    \"json\": {\n      \"description\": \"Test 3\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "1b79f2f6-629c-4a76-9586-0a01001009d0",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "8f7dbd00-3709-4d98-85c9-70890ad4747c",
+    "name": "gameType-list",
+    "url": "http://localhost:3000/api/trpc/gameType.list?batch=1&input={\"0\":{\"json\":{}}}",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-01-13T23:37:22.539Z",
+    "modified": "2023-01-13T23:37:22.539Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      },
+      {
+        "name": "input",
+        "value": "{\"0\":{\"json\":{}}}",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "fe251671-248e-45c3-bf66-a9bd84c61d18",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "1cfca610-1478-4bf7-8000-ee0d9f2ba02f",
+    "name": "game-list",
+    "url": "http://localhost:3000/api/trpc/game.list?batch=1&input={\"0\":{\"json\":{}}}",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-01-13T23:37:22.540Z",
+    "modified": "2023-01-13T23:37:22.540Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      },
+      {
+        "name": "input",
+        "value": "{\"0\":{\"json\":{}}}",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "2446b448-bed4-405d-ae44-ce93fcb4596b",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "6632e1c0-4b3b-45e0-9463-43a5f64b28e5",
+    "name": "user-list",
+    "url": "http://localhost:3000/api/trpc/user.list?batch=1&input={\"0\":{\"json\":{}}}",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-01-13T23:37:22.541Z",
+    "modified": "2023-01-13T23:37:22.541Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      },
+      {
+        "name": "input",
+        "value": "{\"0\":{\"json\":{}}}",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "044ed8ca-a1ec-4102-8840-06ba8e17233c",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "db922145-47ef-40b8-a966-953dc3e0d01e",
+    "name": "district-delete",
+    "url": "http://localhost:3000/api/trpc/district.delete?batch=1",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-01-13T23:37:22.542Z",
+    "modified": "2023-01-13T23:37:22.542Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "next-auth.session-token=8c0bcd55-6e12-49f1-8a89-0208cd1db7c7;"
+      }
+    ],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"0\": {\n    \"json\": {\n      \"id\": \"a48083ce-c574-496e-adf4-b3a5be69da62\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "8168d06f-0ff4-4a45-b236-f2262395bad1",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "83af8c1a-31e3-4f3e-93a4-0467bfe06321",
+    "name": "county-update",
+    "url": "http://localhost:3000/api/trpc/county.update?batch=1",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-01-13T23:37:22.543Z",
+    "modified": "2023-01-13T23:37:22.543Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "next-auth.session-token=8c0bcd55-6e12-49f1-8a89-0208cd1db7c7;"
+      }
+    ],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"0\": {\n    \"json\": {\n      \"id\": \"926f95be-601b-48da-83de-b74f84849f09\",\n      \"description\": \"Test 3\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "774cbda7-422d-4f0f-ac9d-74aba6ddb900",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "8f7dbd00-3709-4d98-85c9-70890ad4747c",
+    "name": "gameType-update",
+    "url": "http://localhost:3000/api/trpc/gameType.update?batch=1",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-01-13T23:37:22.544Z",
+    "modified": "2023-01-13T23:37:22.544Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "next-auth.session-token=8c0bcd55-6e12-49f1-8a89-0208cd1db7c7;"
+      }
+    ],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"0\": {\n    \"json\": {\n      \"id\": \"6d0d6bff-2769-465c-9d68-62c1473dd279\",\n      \"description\": \"Padel\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "b9ba83fe-a1b2-4619-b814-eb416c669c8a",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "1cfca610-1478-4bf7-8000-ee0d9f2ba02f",
+    "name": "game-update",
+    "url": "http://localhost:3000/api/trpc/game.update?batch=1",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-01-13T23:37:22.545Z",
+    "modified": "2023-01-13T23:37:22.545Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "next-auth.session-token=8c0bcd55-6e12-49f1-8a89-0208cd1db7c7;"
+      }
+    ],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"0\": {\n    \"json\": {\n      \"id\": \"b1df67f5-272e-4cc5-87fa-719188d36bb6\",\n       \"title\": \"Vem jogar!\",\n\t\t\t\"description\": \"Joga e diverte-te em equipa :)\",\n\t\t\t\"districtId\": \"1baa1a23-f2a6-4fcd-b2d3-6bdeb1577c6e\",\n\t\t\t\"countyId\": \"926f95be-601b-48da-83de-b74f84849f09\",\n\t\t\t\"userId\": \"e6984d57-bbb0-4c83-b59b-57d07fe6dbfa\",\n\t\t\t\"typeId\": \"3eb040d0-367e-427f-a93f-f7ffaabf2056\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "89d9dc6c-85e9-4106-98dd-4565e851bb17",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "6632e1c0-4b3b-45e0-9463-43a5f64b28e5",
+    "name": "user-update",
+    "url": "http://localhost:3000/api/trpc/user.update?batch=1",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-01-13T23:37:22.546Z",
+    "modified": "2023-01-13T23:37:22.546Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "next-auth.session-token=8c0bcd55-6e12-49f1-8a89-0208cd1db7c7;"
+      }
+    ],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"0\": {\n    \"json\": {\n      \"id\": \"6d0d6bff-2769-465c-9d68-62c1473dd279\",\n      \"description\": \"João React\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "6b8e8a52-e67f-4515-b9a2-265f41ee839d",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "db922145-47ef-40b8-a966-953dc3e0d01e",
+    "name": "district-list",
+    "url": "http://localhost:3000/api/trpc/district.list?batch=1&input={\"0\":{\"json\":{\"description\": \"\"}}}",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-01-13T23:37:22.547Z",
+    "modified": "2023-01-13T23:37:22.547Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      },
+      {
+        "name": "input",
+        "value": "{\"0\":{\"json\":{\"description\": \"\"}}}",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "523bb99e-a95a-4bbf-b4f8-0fcf9e5679e1",
+    "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
+    "containerId": "db922145-47ef-40b8-a966-953dc3e0d01e",
+    "name": "district-update",
+    "url": "http://localhost:3000/api/trpc/district.update?batch=1",
+    "method": "POST",
+    "sortNum": 35000,
+    "created": "2023-01-13T23:37:22.548Z",
+    "modified": "2023-01-13T23:37:22.548Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "next-auth.session-token=8c0bcd55-6e12-49f1-8a89-0208cd1db7c7;"
+      }
+    ],
+    "params": [
+      {
+        "name": "batch",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"0\": {\n    \"json\": {\n      \"id\": \"d26877b1-dfbf-41f1-a762-0a270321cef2\",\n      \"description\": \"Faro\"\n    }\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  }
+]

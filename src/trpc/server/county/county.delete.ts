@@ -3,9 +3,9 @@ import { z } from 'zod';
 import { db } from '@lib';
 
 import { trpcApi } from '../trpc';
-import { trpcUtils } from './district';
+import { trpcUtils } from './county';
 
-export const districtDelete = trpcApi.privateProcedure
+export const countyDelete = trpcApi.privateProcedure
 	.input(
 		z.object({
 			id: z.string(),
@@ -17,7 +17,7 @@ export const districtDelete = trpcApi.privateProcedure
 			handler: () => {
 				const { id } = input;
 
-				return db.district.delete({
+				return db.county.delete({
 					where: {
 						id,
 					},
