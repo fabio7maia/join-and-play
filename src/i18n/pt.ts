@@ -33,4 +33,18 @@ export const i18nPt: I18n = {
 			},
 		},
 	},
+	login: {
+		welcomeMessage: 'Olá de novo, {{username}}',
+		title: 'Entrar',
+		subtitle: 'Entra com a tua conta para gerires a plataforma',
+		email: 'Email',
+		emailPlaceholder: 'email@dominio.pt',
+		password: 'Palavra-Passe',
+		passwordPlaceholder: 'Introduz aqui a tua senha',
+		remember: 'Lembrar de mim',
+		forgot: 'Esqueceste a password?',
+		signIn: 'Entrar',
+		github: 'Github',
+		google: 'Google',
+	},
 };
