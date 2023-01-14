@@ -1,12 +1,11 @@
 import { z } from 'zod';
 
 import { db } from '@lib';
-import { Logger } from '@utils';
 
 import { trpcApi } from '../trpc';
-import { trpcUtils } from './district';
+import { trpcUtils } from './gameType';
 
-export const districtList = trpcApi.publicProcedure
+export const gameTypeList = trpcApi.publicProcedure
 	.input(
 		z.object({
 			description: z.string().nullish(),
@@ -18,7 +17,7 @@ export const districtList = trpcApi.publicProcedure
 			handler: () => {
 				const { description } = input;
 
-				return db.district.findMany({
+				return db.gameType.findMany({
 					where: {
 						description: {
 							contains: description || undefined,
