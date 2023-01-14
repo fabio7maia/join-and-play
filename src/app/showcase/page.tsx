@@ -1,4 +1,21 @@
+'use client';
+
+import React from 'react';
+
+import { useLogger } from '@hooks';
+import { trpcClient } from '@trpc-client';
+
 export default function ShowcasePage() {
+	const logger = useLogger();
+	const [districtId, setDistrictId] = React.useState<string>();
+
+	const games = trpcClient.game.list.useQuery({});
+	const districts = trpcClient.district.list.useQuery({});
+	const counties = trpcClient.county.list.useQuery({ districtId: districtId });
+	const gameTypes = trpcClient.gameType.list.useQuery({});
+
+	logger.log('ShowcasePage > render', { districtId });
+
 	return (
 		<div className="flex flex-col h-screen">
 			<div className="navbar bg-primary text-primary-content">
@@ -91,7 +108,7 @@ export default function ShowcasePage() {
 				{/* Search games */}
 				<div className="my-6">
 					<div className="hero bg-base-200">
-						<div className="hero-content flex-col lg:flex-row-reverse">
+						<div className="hero-content flex-col">
 							<div className="text-center lg:text-left">
 								<h1 className="text-5xl font-bold">Search!</h1>
 								<p className="py-6">Find everything :)</p>
@@ -103,12 +120,18 @@ export default function ShowcasePage() {
 											<label className="label">
 												<span className="label-text">District</span>
 											</label>
-											<select className="select select-bordered w-full max-w-xs">
+											<select
+												className="select select-bordered w-full max-w-xs"
+												onChange={(evt) => setDistrictId(evt.currentTarget.value)}
+											>
 												<option disabled selected>
 													District
 												</option>
-												<option>Porto</option>
-												<option>Braga</option>
+												{districts.data?.map((district) => (
+													<option key={district.id} value={district.id}>
+														{district.description}
+													</option>
+												))}
 											</select>
 										</div>
 										<div className="form-control mr-6">
@@ -119,8 +142,9 @@ export default function ShowcasePage() {
 												<option disabled selected>
 													County
 												</option>
-												<option>Amarante</option>
-												<option>Marco de Canaveses</option>
+												{counties.data?.map((county) => (
+													<option key={county.id}>{county.description}</option>
+												))}
 											</select>
 										</div>
 										<div className="form-control mr-6">
@@ -131,9 +155,9 @@ export default function ShowcasePage() {
 												<option disabled selected>
 													Category
 												</option>
-												<option>Football</option>
-												<option>Padel</option>
-												<option>Tennis</option>
+												{gameTypes.data?.map((gameType) => (
+													<option key={gameType.id}>{gameType.description}</option>
+												))}
 											</select>
 										</div>
 										<div className="form-control mr-6">
@@ -162,57 +186,25 @@ export default function ShowcasePage() {
 				{/* Next games */}
 				<div className="my-6">
 					<div className="carousel carousel-center space-x-4 bg-neutral">
-						<div className="carousel-item">
-							<div className="card my-4 w-96 bg-base-100 shadow-xl">
-								<figure>
-									<img
-										src="https://cdn.pixabay.com/photo/2016/05/27/14/33/football-1419954_960_720.jpg"
-										alt="Football"
-									/>
-								</figure>
-								<div className="card-body">
-									<h2 className="card-title">Football!</h2>
-									<p>Play football at 19h</p>
-									<div className="card-actions justify-end">
-										<button className="btn btn-primary">Join</button>
+						{games.data?.map((game) => (
+							<div className="carousel-item" key={game.id}>
+								<div className="card my-4 w-96 bg-base-100 shadow-xl">
+									<figure>
+										<img
+											src="https://cdn.pixabay.com/photo/2016/05/27/14/33/football-1419954_960_720.jpg"
+											alt="Football"
+										/>
+									</figure>
+									<div className="card-body">
+										<h2 className="card-title">{game.title}</h2>
+										<p>{game.description}</p>
+										<div className="card-actions justify-end">
+											<button className="btn btn-primary">Join</button>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div className="carousel-item">
-							<div className="card my-4 w-96 bg-base-100 shadow-xl">
-								<figure>
-									<img
-										src="https://cdn.pixabay.com/photo/2021/06/04/06/54/racket-6308994_960_720.jpg"
-										alt="Padel"
-									/>
-								</figure>
-								<div className="card-body">
-									<h2 className="card-title">Padel!</h2>
-									<p>Play padel at 17h</p>
-									<div className="card-actions justify-end">
-										<button className="btn btn-primary">Join</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className="carousel-item">
-							<div className="card my-4 w-96 bg-base-100 shadow-xl">
-								<figure>
-									<img
-										src="https://cdn.pixabay.com/photo/2016/09/15/15/27/tennis-court-1671852_960_720.jpg"
-										alt="Tennis"
-									/>
-								</figure>
-								<div className="card-body">
-									<h2 className="card-title">Play tennis!</h2>
-									<p>Play tennis at 21h</p>
-									<div className="card-actions justify-end">
-										<button className="btn btn-primary">Join</button>
-									</div>
-								</div>
-							</div>
-						</div>
+						))}
 					</div>
 				</div>
 			</main>
