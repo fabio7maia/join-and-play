@@ -1,14 +1,14 @@
 import { z } from 'zod';
 
 import { db } from '@lib';
-import { Logger } from '@utils';
 
 import { trpcApi } from '../trpc';
-import { trpcUtils } from './district';
+import { trpcUtils } from './county';
 
-export const districtList = trpcApi.publicProcedure
+export const countyList = trpcApi.publicProcedure
 	.input(
 		z.object({
+			districtId: z.string().nullish(),
 			description: z.string().nullish(),
 		})
 	)
@@ -16,13 +16,14 @@ export const districtList = trpcApi.publicProcedure
 		return trpcUtils.list({
 			input,
 			handler: () => {
-				const { description } = input;
+				const { districtId, description } = input;
 
-				return db.district.findMany({
+				return db.county.findMany({
 					where: {
 						description: {
 							contains: description || undefined,
 						},
+						districtId: districtId || undefined,
 					},
 				});
 			},
