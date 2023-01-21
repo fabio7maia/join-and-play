@@ -5,7 +5,7 @@ import { db } from '@lib';
 import { trpcApi } from '../trpc';
 import { trpcUtils } from './game';
 
-export const gameCreate = trpcApi.privateProcedure
+export const gameCreate = trpcApi.publicProcedure
 	.input(
 		z.object({
 			title: z.string(),
