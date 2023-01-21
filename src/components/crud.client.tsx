@@ -7,6 +7,8 @@ import { Box, Button, Input, Modal, Table, Typography } from 'react-xp-ui';
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/solid';
 import { useI18n } from '@hooks';
 
+import { Loading } from './loading';
+
 export interface CrudInputProps {
 	name: string;
 	type: React.HTMLInputTypeAttribute;
@@ -32,6 +34,10 @@ export interface CrudInputProps {
 	 * Default `true`
 	 */
 	visibleOnCreateOrUpdate?: boolean;
+
+	onTableRender?: (item: any) => React.ReactNode;
+
+	onInputRender?: (obj: { value: any; onChange: (value: any) => void; isDelete?: boolean }) => React.ReactNode;
 }
 
 export interface CrudProps {
@@ -40,10 +46,12 @@ export interface CrudProps {
 	onSave: (object: any) => void;
 	onDelete: (object: any) => void;
 	inputs: CrudInputProps[];
+	onlyList?: boolean;
+	isLoading?: boolean;
 }
 
 export const Crud: React.FC<CrudProps> = (props) => {
-	const { name, list, onDelete, inputs } = props;
+	const { name, list, onDelete, inputs, onlyList = false, isLoading = false } = props;
 	const { t } = useI18n();
 
 	const dataForEdit = React.useRef<any>();
@@ -82,7 +90,20 @@ export const Crud: React.FC<CrudProps> = (props) => {
 		.map((input) => ({
 			id: input.name,
 			head: () => <Typography>{input.label}</Typography>,
-			body: (item: any) => <Typography>{item[input.name]}</Typography>,
+			body: (item: any) => {
+				if (input.onTableRender) {
+					return input.onTableRender(item);
+				}
+				const value = item[input.name];
+
+				const isBooleanType = toString.call(value) === '[object Boolean]';
+
+				if (isBooleanType) {
+					return <input type="checkbox" checked={value} disabled />;
+				} else {
+					return <Typography>{value}</Typography>;
+				}
+			},
 			foot: () => <Typography>{input.label}</Typography>,
 		}));
 
@@ -109,63 +130,88 @@ export const Crud: React.FC<CrudProps> = (props) => {
 						},
 					]}
 				>
-					{inputs.map((input) => (
-						<Input
-							key={input.name}
-							type={input.type}
-							formControl={{
-								label: input.label,
-							}}
-							value={dataForDelete.current?.[input.name]}
-						/>
-					))}
+					{inputs.map((input) =>
+						input.onInputRender ? (
+							input.onInputRender({
+								value: dataForDelete.current?.[input.name],
+								onChange: () => {},
+								isDelete: true,
+							})
+						) : (
+							<Input
+								key={input.name}
+								type={input.type}
+								formControl={{
+									label: input.label,
+								}}
+								value={dataForDelete.current?.[input.name]}
+							/>
+						)
+					)}
 				</Modal>
 			)}
 
-			<Box>
-				<Typography as="h1">{t(`crud.${name}.title`)}</Typography>
+			<Box className="mb-8">
+				<Typography as="h1" className="font-bold text-xl">
+					{t(`crud.${name}.title`)}
+				</Typography>
 			</Box>
 
-			<Box className="my-8 text-end">
-				<Button onClick={() => setShowModalCreateOrUpdate(true)}>
-					<Box className="flex flex-row items-center">
-						<PlusIcon width={24} /> <Typography className="pl-2">{t(`crud.${name}.action.add`)}</Typography>
-					</Box>
-				</Button>
-			</Box>
-
-			<Table
-				rowId={(item) => item[inputIdentifier]}
-				columns={[
-					...tableItems,
-					// options are fixed
-					{
-						id: 'options',
-						head: () => <Typography>{t(`crud.${name}.action.options`)}</Typography>,
-						body: (item) => (
-							<Box className="flex flex-row">
-								<Button appearance="secondary" onClick={() => handleOnClickEdit(item)}>
-									<Box className="flex flex-row items-center">
-										<PencilIcon width={16} />{' '}
-										<Typography className="pl-2">{t(`crud.${name}.action.edit`)}</Typography>
-									</Box>
-								</Button>
-
-								<Box className="ml-4">
-									<Button appearance="accent" onClick={() => handleOnClickDelete(item)}>
-										<Box className="flex flex-row items-center">
-											<TrashIcon width={16} />{' '}
-											<Typography className="pl-2">{t(`crud.${name}.action.delete`)}</Typography>
-										</Box>
-									</Button>
+			{isLoading ? (
+				<Loading className="h-screen flex justify-center items-center" />
+			) : (
+				<>
+					{!onlyList && (
+						<Box className="my-8 text-end">
+							<Button onClick={() => setShowModalCreateOrUpdate(true)}>
+								<Box className="flex flex-row items-center">
+									<PlusIcon width={24} />{' '}
+									<Typography className="pl-2">{t(`crud.${name}.action.add`)}</Typography>
 								</Box>
-							</Box>
-						),
-						foot: () => <Typography>{t(`crud.${name}.action.option`)}</Typography>,
-					},
-				]}
-				items={list || []}
-			/>
+							</Button>
+						</Box>
+					)}
+					<Table
+						rowId={(item) => item[inputIdentifier]}
+						columns={[
+							...tableItems,
+							// options are fixed
+							{
+								id: 'options',
+								head: () => <Typography>{t(`crud.${name}.action.options`)}</Typography>,
+								body: (item) =>
+									!onlyList ? (
+										<Box className="flex flex-row">
+											<Button appearance="secondary" onClick={() => handleOnClickEdit(item)}>
+												<Box className="flex flex-row items-center">
+													<PencilIcon width={16} />{' '}
+													<Typography className="pl-2">
+														{t(`crud.${name}.action.edit`)}
+													</Typography>
+												</Box>
+											</Button>
+
+											<Box className="ml-4">
+												<Button appearance="accent" onClick={() => handleOnClickDelete(item)}>
+													<Box className="flex flex-row items-center">
+														<TrashIcon width={16} />{' '}
+														<Typography className="pl-2">
+															{t(`crud.${name}.action.delete`)}
+														</Typography>
+													</Box>
+												</Button>
+											</Box>
+										</Box>
+									) : (
+										''
+									),
+								foot: () => <Typography>{t(`crud.${name}.action.option`)}</Typography>,
+							},
+						]}
+						items={list || []}
+					/>
+				</>
+			)}
 		</Box>
 	);
 };
@@ -241,23 +287,34 @@ export const CrudCreateOrUpdateModal: React.FC<CrudCreateOrUpdateModalProps> = (
 				{inputs
 					.filter((i) => (i.visibleOnCreateOrUpdate !== undefined ? i.visibleOnCreateOrUpdate : true))
 					?.map((input) => {
-						const { name, label, optional = false } = input;
+						const { name, label, optional = false, onInputRender } = input;
 						return (
 							<Box className="pt-6" key={name}>
-								<Input
-									type={input.type}
-									value={object?.[name]}
-									onChange={(v: any) =>
-										setObject((prevValue: any) => ({
-											...prevValue,
-											[name]: v,
-										}))
-									}
-									formControl={{
-										label: label,
-									}}
-									required={!optional}
-								/>
+								{onInputRender ? (
+									onInputRender({
+										value: object?.[name],
+										onChange: (v: any) =>
+											setObject((prevValue: any) => ({
+												...prevValue,
+												[name]: v,
+											})),
+									})
+								) : (
+									<Input
+										type={input.type}
+										value={object?.[name]}
+										onChange={(v: any) =>
+											setObject((prevValue: any) => ({
+												...prevValue,
+												[name]: v,
+											}))
+										}
+										formControl={{
+											label: label,
+										}}
+										required={!optional}
+									/>
+								)}
 							</Box>
 						);
 					})}

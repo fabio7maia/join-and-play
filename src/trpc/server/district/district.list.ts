@@ -10,18 +10,22 @@ export const districtList = trpcApi.publicProcedure
 	.input(
 		z.object({
 			description: z.string().nullish(),
+			id: z.string().nullish(),
 		})
 	)
 	.query(async ({ input }) => {
 		return trpcUtils.list({
 			input,
 			handler: () => {
-				const { description } = input;
+				const { description, id } = input;
 
 				return db.district.findMany({
 					where: {
 						description: {
 							contains: description || undefined,
+						},
+						id: {
+							contains: id || undefined,
 						},
 					},
 				});

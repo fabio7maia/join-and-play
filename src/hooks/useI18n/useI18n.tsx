@@ -5,7 +5,7 @@ import dot from 'dot-object';
 import { i18n } from '@i18n';
 
 export const useI18n = () => {
-	const lang = navigator.language;
+	const lang = navigator?.language || 'pt-PT';
 	const isPt = lang === 'pt-PT';
 	const i18nList = isPt ? i18n.pt : i18n.en;
 

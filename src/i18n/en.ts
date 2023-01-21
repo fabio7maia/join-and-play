@@ -32,6 +32,102 @@ export const i18nEn: I18n = {
 				options: 'Options',
 			},
 		},
+		gameType: {
+			title: 'Game Category',
+			label: 'Description',
+			modal: {
+				delete: {
+					title: 'Confirmation of District Delete',
+					button: {
+						cancel: 'Cancel',
+						confirm: 'Confirm',
+					},
+				},
+				createOrUpdate: {
+					title: 'Create or Edit Category',
+					button: {
+						cancel: 'Cancel',
+						confirm: 'Save',
+					},
+				},
+			},
+			action: {
+				add: 'Add',
+				delete: 'Delete',
+				edit: 'Edit',
+				options: 'Options',
+			},
+		},
+		users: {
+			title: 'Users',
+			label: '',
+			id: {
+				label: 'UserId',
+			},
+			email: {
+				label: 'Email',
+			},
+			name: {
+				label: 'Name',
+			},
+			isAdminRole: {
+				label: 'Administrator',
+			},
+			modal: {
+				delete: {
+					title: '',
+					button: {
+						cancel: '',
+						confirm: '',
+					},
+				},
+				createOrUpdate: {
+					title: '',
+					button: {
+						cancel: '',
+						confirm: '',
+					},
+				},
+			},
+			action: {
+				add: '',
+				delete: '',
+				edit: '',
+				options: '',
+			},
+		},
+		county: {
+			title: 'County',
+			label: '',
+			description: {
+				label: 'County',
+			},
+			district: {
+				label: 'District',
+			},
+			modal: {
+				delete: {
+					title: 'Confirmation of County Delete',
+					button: {
+						cancel: 'Cancel',
+						confirm: 'Confirm',
+					},
+				},
+				createOrUpdate: {
+					title: 'Create or Edit County',
+					button: {
+						cancel: 'Cancel',
+						confirm: 'Save',
+					},
+				},
+			},
+			action: {
+				add: 'Add',
+				delete: 'Delete',
+				edit: 'Edit',
+				options: 'Options',
+			},
+		},
 	},
 	login: {
 		welcomeMessage: 'Hello again, {{username}}',
