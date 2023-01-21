@@ -37,7 +37,8 @@ export function UserAuthForm({ className, session, ...props }: UserAuthFormProps
 						<div className="avatar">
 							<div className="w-24 rounded-full">
 								{/* TODO: Use Image from Next/image */}
-								<img src={session?.user?.image || ''} alt="avatar" />
+
+								{session?.user?.image && <img src={session?.user?.image} alt="avatar" />}
 							</div>
 						</div>
 						<h1 className="mb-3 font-bold text-5xl">

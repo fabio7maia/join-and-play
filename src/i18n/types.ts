@@ -21,6 +21,30 @@ export interface I18nCrud {
 	};
 }
 
+export interface UserCrud extends I18nCrud {
+	id: {
+		label: string;
+	};
+	email: {
+		label: string;
+	};
+	name: {
+		label: string;
+	};
+	isAdminRole: {
+		label: string;
+	};
+}
+
+export interface CountyCrud extends I18nCrud {
+	description: {
+		label: string;
+	};
+	district: {
+		label: string;
+	};
+}
+
 export interface I18n {
 	general: {
 		ok: string;
@@ -28,6 +52,9 @@ export interface I18n {
 	};
 	crud: {
 		district: I18nCrud;
+		gameType: I18nCrud;
+		users: UserCrud;
+		county: CountyCrud;
 	};
 	login: {
 		welcomeMessage: string;

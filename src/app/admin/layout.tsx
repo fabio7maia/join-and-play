@@ -47,11 +47,19 @@ export default async function AdminLayout({ children }: AdminLayoutProps) {
 								<a href="/admin/district">District</a>
 							</li>
 							<li>
+								<a href="/admin/county">County</a>
+							</li>
+							<li>
+								<a href="/admin/gameType">Game Type</a>
+							</li>
+							<li>
+								<a href="/admin/users">Users</a>
+							</li>
+							<li>
 								<a href="/admin/games">Games</a>
 							</li>
 						</ul>
 					</div>
-					<span className="link link-hover">Logout</span>
 				</aside>
 				<main className="flex w-0 flex-1 flex-col overflow-hidden px-12 py-10">{children}</main>
 			</div>
