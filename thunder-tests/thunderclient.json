@@ -244,11 +244,11 @@
     "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
     "containerId": "83af8c1a-31e3-4f3e-93a4-0467bfe06321",
     "name": "county-list",
-    "url": "http://localhost:3000/api/trpc/county.list?batch=1&input={\"0\":{\"json\":{\"district\": \"Porto\"}}}",
+    "url": "http://localhost:3000/api/trpc/county.list?batch=1&input={\"0\":{\"json\":{}}}",
     "method": "GET",
     "sortNum": 10000,
     "created": "2023-01-13T23:37:22.537Z",
-    "modified": "2023-01-13T23:37:22.537Z",
+    "modified": "2023-01-21T00:01:50.539Z",
     "headers": [],
     "params": [
       {
@@ -258,7 +258,7 @@
       },
       {
         "name": "input",
-        "value": "{\"0\":{\"json\":{\"district\": \"Porto\"}}}",
+        "value": "{\"0\":{\"json\":{}}}",
         "isPath": false
       }
     ],

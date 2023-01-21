@@ -44,8 +44,10 @@ export async function createTrpcContext(
 			user: await opts.getUser(),
 		};
 	}
+
 	// not RSC
 	const session = await unstable_getServerSession(opts.req, opts.res, authOptions);
+
 	return {
 		type: opts.type,
 		user: session?.user,

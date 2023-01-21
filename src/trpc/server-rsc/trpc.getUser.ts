@@ -5,6 +5,7 @@ export interface User {
 	id: string;
 	email: string;
 	name: string;
+	image: string;
 }
 export async function getUser(): Promise<User | null> {
 	const cookiesObj = cookies();
@@ -33,5 +34,6 @@ export async function getUser(): Promise<User | null> {
 		id: token.sub,
 		name: token.name,
 		email: token.email,
+		image: token.picture || '',
 	};
 }

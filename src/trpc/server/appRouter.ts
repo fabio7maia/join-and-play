@@ -12,7 +12,7 @@ import { userRouter } from './user';
 
 export const appRouter = trpcApi.router({
 	healthcheck: trpcApi.publicProcedure.query(() => 'yay!'),
-	whoami: trpcApi.publicProcedure.query(({ ctx }) => ctx.user),
+	whoAmI: trpcApi.publicProcedure.query(({ ctx }) => ctx.user),
 	version: trpcApi.publicProcedure.query(() => packageJson.version),
 	county: countyRouter,
 	district: districtRouter,
