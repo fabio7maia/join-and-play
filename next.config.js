@@ -7,6 +7,14 @@ const nextConfig = {
 		newNextLinkBehavior: true,
 		serverComponentsExternalPackages: ['@prisma/client'],
 	},
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'avatars.githubusercontent.com',
+			},
+		],
+	},
 };
 
 module.exports = nextConfig;
