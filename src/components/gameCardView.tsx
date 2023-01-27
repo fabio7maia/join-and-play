@@ -22,7 +22,9 @@ export const GameCardView: React.FC<GameCardViewProps> = ({ game, onClickJoin })
 					<p>{game.description}</p>
 					{onClickJoin && (
 						<div className="card-actions justify-end">
-							<button className="btn btn-primary">Join</button>
+							<button className="btn btn-primary" onClick={onClickJoin}>
+								Join
+							</button>
 						</div>
 					)}
 				</div>

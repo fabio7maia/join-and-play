@@ -3,9 +3,9 @@ import { z } from 'zod';
 import { db } from '@lib';
 
 import { trpcApi } from '../trpc';
-import { trpcUtils } from './gameType';
+import { trpcUtils } from './player';
 
-export const gameTypeDelete = trpcApi.privateProcedure
+export const playerDelete = trpcApi.privateProcedure
 	.input(
 		z.object({
 			id: z.string(),
@@ -17,7 +17,7 @@ export const gameTypeDelete = trpcApi.privateProcedure
 			handler: () => {
 				const { id } = input;
 
-				return db.gameType.delete({
+				return db.player.delete({
 					where: {
 						id,
 					},

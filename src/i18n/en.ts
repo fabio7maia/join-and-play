@@ -32,7 +32,7 @@ export const i18nEn: I18n = {
 				options: 'Options',
 			},
 		},
-		gameType: {
+		category: {
 			title: 'Game Category',
 			label: 'Description',
 			modal: {

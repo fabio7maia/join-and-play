@@ -22,7 +22,7 @@ export default function GameCreatePage() {
 
 	const districts = trpcClient.district.list.useQuery({});
 	const counties = trpcClient.county.list.useQuery({ districtId: districtId });
-	const gameTypes = trpcClient.gameType.list.useQuery({});
+	const categories = trpcClient.category.list.useQuery({});
 	const currentLoggedUser = trpcClient.whoAmI.useQuery();
 	const gameCreate = trpcClient.game.create.useMutation();
 	const userId = (currentLoggedUser.data as User)?.id;
@@ -163,9 +163,9 @@ export default function GameCreatePage() {
 										<option disabled selected>
 											Category
 										</option>
-										{gameTypes.data?.map((gameType) => (
-											<option key={gameType.id} value={gameType.id}>
-												{gameType.description}
+										{categories.data?.map((category) => (
+											<option key={category.id} value={category.id}>
+												{category.description}
 											</option>
 										))}
 									</select>

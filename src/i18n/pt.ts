@@ -32,7 +32,7 @@ export const i18nPt: I18n = {
 				options: 'Opções',
 			},
 		},
-		gameType: {
+		category: {
 			title: 'Categorias de Jogos',
 			label: 'Descrição',
 			modal: {
