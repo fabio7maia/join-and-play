@@ -33,12 +33,12 @@
     "_id": "8ef17b0b-4f7f-40b1-a0fe-d8f1c18edcf1",
     "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
     "containerId": "8f7dbd00-3709-4d98-85c9-70890ad4747c",
-    "name": "gameType-create",
-    "url": "http://localhost:3000/api/trpc/gameType.create?batch=1",
+    "name": "category-create",
+    "url": "http://localhost:3000/api/trpc/category.create?batch=1",
     "method": "POST",
     "sortNum": 5000,
     "created": "2023-01-13T23:37:22.529Z",
-    "modified": "2023-01-13T23:37:22.529Z",
+    "modified": "2023-01-27T23:42:36.538Z",
     "headers": [
       {
         "name": "Cookie",
@@ -153,12 +153,12 @@
     "_id": "27622d93-c7c1-42d7-8e07-3de90523efc8",
     "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
     "containerId": "8f7dbd00-3709-4d98-85c9-70890ad4747c",
-    "name": "gameType-delete",
-    "url": "http://localhost:3000/api/trpc/gameType.delete?batch=1",
+    "name": "category-delete",
+    "url": "http://localhost:3000/api/trpc/category.delete?batch=1",
     "method": "POST",
     "sortNum": 7500,
     "created": "2023-01-13T23:37:22.533Z",
-    "modified": "2023-01-13T23:37:22.533Z",
+    "modified": "2023-01-27T23:42:40.002Z",
     "headers": [
       {
         "name": "Cookie",
@@ -298,12 +298,12 @@
     "_id": "1b79f2f6-629c-4a76-9586-0a01001009d0",
     "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
     "containerId": "8f7dbd00-3709-4d98-85c9-70890ad4747c",
-    "name": "gameType-list",
-    "url": "http://localhost:3000/api/trpc/gameType.list?batch=1&input={\"0\":{\"json\":{}}}",
+    "name": "category-list",
+    "url": "http://localhost:3000/api/trpc/category.list?batch=1&input={\"0\":{\"json\":{}}}",
     "method": "GET",
     "sortNum": 10000,
     "created": "2023-01-13T23:37:22.539Z",
-    "modified": "2023-01-13T23:37:22.539Z",
+    "modified": "2023-01-27T23:42:43.319Z",
     "headers": [],
     "params": [
       {
@@ -433,12 +433,12 @@
     "_id": "774cbda7-422d-4f0f-ac9d-74aba6ddb900",
     "colId": "e00095ba-c36a-4258-af2b-a1937360bd47",
     "containerId": "8f7dbd00-3709-4d98-85c9-70890ad4747c",
-    "name": "gameType-update",
-    "url": "http://localhost:3000/api/trpc/gameType.update?batch=1",
+    "name": "category-update",
+    "url": "http://localhost:3000/api/trpc/category.update?batch=1",
     "method": "POST",
     "sortNum": 20000,
     "created": "2023-01-13T23:37:22.544Z",
-    "modified": "2023-01-13T23:37:22.544Z",
+    "modified": "2023-01-27T23:42:46.454Z",
     "headers": [
       {
         "name": "Cookie",

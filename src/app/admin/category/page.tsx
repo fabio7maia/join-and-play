@@ -7,30 +7,30 @@ import { useI18n } from '@hooks';
 import { District } from '@prisma/client';
 import { trpcClient } from '@trpc-client';
 
-export default function GameTypeManagement() {
+export default function CategoryManagement() {
 	const { t } = useI18n();
-	const res = trpcClient.gameType.list.useQuery({});
-	const { mutate: gameTypeDelete } = trpcClient.gameType.delete.useMutation();
-	const { mutate: gameTypeCreate } = trpcClient.gameType.create.useMutation();
-	const { mutate: gameTypeUpdate } = trpcClient.gameType.update.useMutation();
+	const res = trpcClient.category.list.useQuery({});
+	const { mutate: categoryDelete } = trpcClient.category.delete.useMutation();
+	const { mutate: categoryCreate } = trpcClient.category.create.useMutation();
+	const { mutate: categoryUpdate } = trpcClient.category.update.useMutation();
 
 	const handleOnClickConfirmDelete = (object: District) => {
-		gameTypeDelete({ id: object.id });
+		categoryDelete({ id: object.id });
 	};
 
 	const handleOnSave = (object: District): void => {
 		if (object.id) {
 			//edit
-			gameTypeUpdate({ description: object.description, id: object.id });
+			categoryUpdate({ description: object.description, id: object.id });
 		} else {
 			// create
-			gameTypeCreate({ description: object.description });
+			categoryCreate({ description: object.description });
 		}
 	};
 
 	return (
 		<Crud
-			name="gameType"
+			name="category"
 			list={res?.data || []}
 			onDelete={handleOnClickConfirmDelete}
 			onSave={handleOnSave}
@@ -44,7 +44,7 @@ export default function GameTypeManagement() {
 					editable: true,
 					type: 'text',
 					name: 'description',
-					label: t('crud.gameType.label'),
+					label: t('crud.category.label'),
 				},
 			]}
 		/>
