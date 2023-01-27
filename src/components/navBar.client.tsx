@@ -106,6 +106,9 @@ export default function NavBar() {
 							<li>
 								<a href="/game/list">My games</a>
 							</li>
+							<li>
+								<a href="/player/list">My joined games</a>
+							</li>
 							<li onClick={() => signOut()}>
 								<a>Logout</a>
 							</li>

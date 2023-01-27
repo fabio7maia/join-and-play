@@ -12,7 +12,7 @@ export default function ShowcasePage() {
 	const games = trpcClient.game.list.useQuery({});
 	const districts = trpcClient.district.list.useQuery({});
 	const counties = trpcClient.county.list.useQuery({ districtId: districtId });
-	const gameTypes = trpcClient.gameType.list.useQuery({});
+	const categories = trpcClient.category.list.useQuery({});
 
 	logger.log('ShowcasePage > render', { districtId });
 
@@ -155,8 +155,10 @@ export default function ShowcasePage() {
 												<option disabled selected>
 													Category
 												</option>
-												{gameTypes.data?.map((gameType) => (
-													<option key={gameType.id}>{gameType.description}</option>
+												{categories.data?.map((category) => (
+													<option key={category.id} value={category.id}>
+														{category.description}
+													</option>
 												))}
 											</select>
 										</div>
