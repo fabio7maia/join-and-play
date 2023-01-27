@@ -52,7 +52,7 @@ export interface I18n {
 	};
 	crud: {
 		district: I18nCrud;
-		gameType: I18nCrud;
+		category: I18nCrud;
 		users: UserCrud;
 		county: CountyCrud;
 	};

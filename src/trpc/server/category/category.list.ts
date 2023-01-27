@@ -3,9 +3,9 @@ import { z } from 'zod';
 import { db } from '@lib';
 
 import { trpcApi } from '../trpc';
-import { trpcUtils } from './gameType';
+import { trpcUtils } from './category';
 
-export const gameTypeList = trpcApi.publicProcedure
+export const categoryList = trpcApi.publicProcedure
 	.input(
 		z.object({
 			description: z.string().nullish(),
@@ -17,7 +17,7 @@ export const gameTypeList = trpcApi.publicProcedure
 			handler: () => {
 				const { description } = input;
 
-				return db.gameType.findMany({
+				return db.category.findMany({
 					where: {
 						description: {
 							contains: description || undefined,

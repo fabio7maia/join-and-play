@@ -28,7 +28,7 @@
       },
       {
         "_id": "8f7dbd00-3709-4d98-85c9-70890ad4747c",
-        "name": "gameType",
+        "name": "category",
         "containerId": "",
         "created": "2023-01-13T23:37:22.531Z",
         "sortNum": 30000

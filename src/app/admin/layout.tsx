@@ -50,7 +50,7 @@ export default async function AdminLayout({ children }: AdminLayoutProps) {
 								<a href="/admin/county">County</a>
 							</li>
 							<li>
-								<a href="/admin/gameType">Game Type</a>
+								<a href="/admin/category">Category</a>
 							</li>
 							<li>
 								<a href="/admin/users">Users</a>

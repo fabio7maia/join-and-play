@@ -4,9 +4,11 @@ import React from 'react';
 
 import { signOut } from 'next-auth/react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import { GameCardView } from '@components/gameCardView';
 import { useLogger } from '@hooks';
+import { Game } from '@prisma/client';
 import { trpcClient } from '@trpc-client';
 
 export default function HomePage() {
@@ -17,6 +19,7 @@ export default function HomePage() {
 	const carouselRef = React.useRef<HTMLDivElement>();
 	const currentScrollPosition = React.useRef<number>(0);
 	const scrollDirection = React.useRef(1);
+	const router = useRouter();
 
 	const games = trpcClient.game.list.useQuery({
 		countyId,
@@ -25,7 +28,8 @@ export default function HomePage() {
 	});
 	const districts = trpcClient.district.list.useQuery({});
 	const counties = trpcClient.county.list.useQuery({ districtId: districtId });
-	const gameTypes = trpcClient.gameType.list.useQuery({});
+	const categories = trpcClient.category.list.useQuery({});
+	const playerCreate = trpcClient.player.create.useMutation();
 	const currentLoggedUser = trpcClient.whoAmI.useQuery();
 
 	React.useEffect(() => {
@@ -70,6 +74,24 @@ export default function HomePage() {
 	const handleOnChangeTypeId = React.useCallback((evt: React.ChangeEvent<HTMLSelectElement>) => {
 		setTypeId(evt.currentTarget.value);
 	}, []);
+
+	const handleOnClickJoinGame = React.useCallback(
+		(game: Game) => {
+			logger.log('HomePage > handleOnClickJoinGame', { game, currentLoggedUser: currentLoggedUser.data });
+
+			if (!currentLoggedUser.data) {
+				return;
+			}
+
+			playerCreate
+				.mutateAsync({
+					gameId: game.id,
+					userId: (currentLoggedUser.data as any).id,
+				})
+				.then((res) => router.push('/player/list'));
+		},
+		[currentLoggedUser.data, logger, playerCreate, router]
+	);
 
 	logger.log('HomePage > render', { districtId, countyId, typeId });
 
@@ -127,9 +149,9 @@ export default function HomePage() {
 											onChange={handleOnChangeTypeId}
 										>
 											<option value="">Category</option>
-											{gameTypes.data?.map((gameType) => (
-												<option key={gameType.id} value={gameType.id}>
-													{gameType.description}
+											{categories.data?.map((category) => (
+												<option key={category.id} value={category.id}>
+													{category.description}
 												</option>
 											))}
 										</select>
@@ -164,7 +186,10 @@ export default function HomePage() {
 				<div ref={carouselRef as any} className="carousel carousel-center space-x-4 bg-neutral transition-all">
 					{games.data?.map((game) => (
 						<div className="carousel-item" key={game.id}>
-							<GameCardView game={game} onClickJoin={() => {}} />
+							<GameCardView
+								game={game}
+								onClickJoin={currentLoggedUser.data ? () => handleOnClickJoinGame(game) : undefined}
+							/>
 						</div>
 					))}
 				</div>
