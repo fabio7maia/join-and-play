@@ -30,8 +30,15 @@ export const authOptions: NextAuthOptions = {
 	callbacks: {
 		async session({ session, token, user }) {
 			if (!(session?.user as any)?.id) {
-				(session.user as any).id = user?.id;
+				(session.user as any) = {
+					...session.user,
+					id: user?.id,
+					emailVerified: (user as any).emailVerified || false,
+					isAdminRole: (user as any).isAdminRole || false,
+				};
 			}
+
+			console.log('DEBUG', { session, token, user });
 
 			return session;
 		},

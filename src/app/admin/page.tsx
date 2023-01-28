@@ -1,31 +1,15 @@
-import { headers } from 'next/headers';
+'use Client';
 
-import { ResourcesList } from '@components/resourcesList.client';
-import { UserLogout } from '@components/userLogout.client';
-import { db, getSession } from '@lib';
-
-export const dynamic = 'force-dynamic';
-
-async function getGames() {
-	const session = await getSession(headers().get('cookie'));
-
-	return await db.game.findMany({
-		where: {
-			userId: (session?.user as any)?.id,
-		},
-	});
-}
+import { useLogger } from '@hooks';
 
 export default async function AdminPage() {
-	const games = await getGames();
-	// const res = rsc.healthcheck.use();
+	const logger = useLogger();
+
+	logger.log('AdminPage > render');
 
 	return (
 		<>
 			<h1>Admin Page</h1>
-			<code>{JSON.stringify(games, undefined, 2)}</code>
-			{/* <ResourcesList /> */}
-			<UserLogout />
 		</>
 	);
 }

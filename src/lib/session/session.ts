@@ -1,6 +1,12 @@
 import { Session } from 'next-auth';
 
-export async function getSession(cookie: string | null): Promise<Session | null> {
+export interface ExtendedSession extends Session {
+	id: string;
+	emailVerified: boolean;
+	isAdminRole: boolean;
+}
+
+export async function getSession(cookie: string | null): Promise<ExtendedSession | null> {
 	if (!cookie) {
 		return null;
 	}
@@ -14,6 +20,8 @@ export async function getSession(cookie: string | null): Promise<Session | null>
 	}
 
 	const session = await response.json();
+
+	console.log('getSession', { session });
 
 	return Object.keys(session).length > 0 ? session : null;
 }
