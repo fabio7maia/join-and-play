@@ -30,7 +30,8 @@ export function UserAuthForm({ className, session, ...props }: UserAuthFormProps
 
 	return (
 		<div className="bg-no-repeat bg-cover bg-center relative">
-			<div className="absolute bg-gradient-to-b from-blue-500 inset-0 z-0"></div>
+			{/* TODO: the next line create a layer in mobile doesn't allow click in buttons*/}
+			{/* <div className="absolute bg-gradient-to-b from-blue-500 inset-0 z-0"></div> */}
 			<div className="min-h-screen sm:flex sm:flex-row mx-0 justify-center">
 				<div className="flex-col flex  self-center p-10 z-10">
 					<div className="self-start hidden lg:flex flex-col  text-white">
