@@ -11,11 +11,11 @@ export async function getUser(): Promise<User | null> {
 	const cookiesObj = cookies();
 	const newCookies: Record<string, string> = {};
 
-	cookiesObj.forEach((cookieName) => {
+	cookiesObj.getAll().forEach((cookieName) => {
 		const cookieValue = cookiesObj.get(cookieName);
 
 		if (cookieValue) {
-			newCookies[cookieName] = cookieValue;
+			newCookies[cookieName.name] = cookieValue.value;
 		}
 	});
 
