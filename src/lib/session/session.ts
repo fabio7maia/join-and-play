@@ -1,6 +1,18 @@
-import { Session } from 'next-auth';
+import { ISODateString, Session } from 'next-auth';
 
-export async function getSession(cookie: string | null): Promise<Session | null> {
+export interface ExtendedSession extends Session {
+	user?: {
+		name?: string | null;
+		email?: string | null;
+		image?: string | null;
+		id: string;
+		emailVerified: boolean;
+		isAdminRole: boolean;
+	};
+	expires: ISODateString;
+}
+
+export async function getSession(cookie: string | null): Promise<ExtendedSession | null> {
 	if (!cookie) {
 		return null;
 	}
