@@ -1,28 +1,21 @@
 import { unstable_getServerSession } from 'next-auth/next';
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { authOptions } from 'src/pages/api/auth/[...nextauth]';
 
 import { useLogger } from '@hooks';
-import { ExtendedSession, getSession } from '@lib';
+import { getSession } from '@lib';
 
 interface AdminLayoutProps {
 	children?: React.ReactNode;
 }
 
-async function getUser() {
-	const session = await getSession(headers().get('cookie'));
-
-	return session;
-}
-
 export default async function AdminLayout({ children }: AdminLayoutProps) {
 	const logger = useLogger();
-	const user = await getUser();
+	const session = await getSession(headers().get('cookie'));
 
-	logger.log('AdminLayout > render', { user });
+	logger.log('AdminLayout > render', { session });
 
-	if (!user || !user.isAdminRole) {
+	if (!session?.user || !session.user.isAdminRole) {
 		redirect('/login');
 		return;
 	}

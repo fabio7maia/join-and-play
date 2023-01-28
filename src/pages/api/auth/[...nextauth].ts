@@ -38,8 +38,6 @@ export const authOptions: NextAuthOptions = {
 				};
 			}
 
-			console.log('DEBUG', { session, token, user });
-
 			return session;
 		},
 	},

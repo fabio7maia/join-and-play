@@ -1,9 +1,15 @@
-import { Session } from 'next-auth';
+import { ISODateString, Session } from 'next-auth';
 
 export interface ExtendedSession extends Session {
-	id: string;
-	emailVerified: boolean;
-	isAdminRole: boolean;
+	user?: {
+		name?: string | null;
+		email?: string | null;
+		image?: string | null;
+		id: string;
+		emailVerified: boolean;
+		isAdminRole: boolean;
+	};
+	expires: ISODateString;
 }
 
 export async function getSession(cookie: string | null): Promise<ExtendedSession | null> {
@@ -20,8 +26,6 @@ export async function getSession(cookie: string | null): Promise<ExtendedSession
 	}
 
 	const session = await response.json();
-
-	console.log('getSession', { session });
 
 	return Object.keys(session).length > 0 ? session : null;
 }
