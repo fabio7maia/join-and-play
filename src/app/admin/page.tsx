@@ -1,6 +1,5 @@
 import { headers } from 'next/headers';
 
-import { ResourcesList } from '@components/resourcesList.client';
 import { UserLogout } from '@components/userLogout.client';
 import { db, getSession } from '@lib';
 
