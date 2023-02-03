@@ -273,7 +273,8 @@ export default function NavBar() {
 						fontWeight={600}
 						color={'white'}
 						bg={'pink.400'}
-						href={'#'}
+						// TODO: refine code
+						// href={'#'}
 						_hover={{
 							bg: 'pink.300',
 						}}
