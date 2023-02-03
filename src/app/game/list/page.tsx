@@ -3,9 +3,9 @@
 import React from 'react';
 
 import { useRouter } from 'next/navigation';
-import { Button, Table } from 'react-xp-ui';
 import { User } from 'src/trpc/server-rsc/trpc.getUser';
 
+import { Button, Table } from '@chakra-ui/react';
 import { useLogger } from '@hooks';
 import { trpcClient } from '@trpc-client';
 
@@ -35,7 +35,8 @@ export default function GameListPage() {
 			<div className="text-xl mb-4 flex justify-end">
 				<Button onClick={handleClickNewGame}>Create a new game</Button>
 			</div>
-			<Table
+			{/* TODO: refine code */}
+			{/* <Table
 				rowId={(item) => item['id']}
 				columns={[
 					{
@@ -52,7 +53,7 @@ export default function GameListPage() {
 					},
 				]}
 				items={games.data || []}
-			/>
+			/> */}
 			<div className="my-16" />
 		</div>
 	);

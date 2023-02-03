@@ -2,8 +2,6 @@
 
 import React from 'react';
 
-import { Box, Button, Input, Modal, Table, Typography } from 'react-xp-ui';
-
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/solid';
 import { useI18n } from '@hooks';
 
@@ -85,6 +83,9 @@ export const Crud: React.FC<CrudProps> = (props) => {
 		setShowModalDelete(false);
 	};
 
+	// TODO: refine code
+	const Typography: React.FC<React.PropsWithChildren> = () => <></>;
+
 	const tableItems = inputs
 		.filter((i) => (i.visibleOnList !== undefined ? i.visibleOnList : true))
 		.map((input) => ({
@@ -109,111 +110,116 @@ export const Crud: React.FC<CrudProps> = (props) => {
 
 	const inputIdentifier = inputs.filter((i) => i.isIdentifier)?.[0].name;
 
-	return (
-		<Box>
-			{showModalCreateOrUpdate && (
-				<CrudCreateOrUpdateModal {...props} onExit={handleOnExit} dataForEdit={dataForEdit.current} />
-			)}
-			{showModalDelete && (
-				<Modal
-					title={t(`crud.${name}.modal.delete.title`)}
-					buttons={[
-						{
-							appearance: 'accent',
-							children: t(`crud.${name}.modal.delete.button.cancel`),
-							onClick: () => setShowModalDelete(false),
-						},
-						{
-							appearance: 'primary',
-							children: t(`crud.${name}.modal.delete.button.confirm`),
-							onClick: handleOnClickConfirmDelete,
-						},
-					]}
-				>
-					{inputs.map((input) =>
-						input.onInputRender ? (
-							input.onInputRender({
-								value: dataForDelete.current?.[input.name],
-								onChange: () => {},
-								isDelete: true,
-							})
-						) : (
-							<Input
-								key={input.name}
-								type={input.type}
-								formControl={{
-									label: input.label,
-								}}
-								value={dataForDelete.current?.[input.name]}
-							/>
-						)
-					)}
-				</Modal>
-			)}
+	return null;
 
-			<Box className="mb-8">
-				<Typography as="h1" className="font-bold text-xl">
-					{t(`crud.${name}.title`)}
-				</Typography>
-			</Box>
+	// return (
+	{
+		/* TODO: refine code */
+	}
+	// <Box>
+	// 	{showModalCreateOrUpdate && (
+	// 		<CrudCreateOrUpdateModal {...props} onExit={handleOnExit} dataForEdit={dataForEdit.current} />
+	// 	)}
+	// 	{showModalDelete && (
+	// 		<Modal
+	// 			title={t(`crud.${name}.modal.delete.title`)}
+	// 			buttons={[
+	// 				{
+	// 					appearance: 'accent',
+	// 					children: t(`crud.${name}.modal.delete.button.cancel`),
+	// 					onClick: () => setShowModalDelete(false),
+	// 				},
+	// 				{
+	// 					appearance: 'primary',
+	// 					children: t(`crud.${name}.modal.delete.button.confirm`),
+	// 					onClick: handleOnClickConfirmDelete,
+	// 				},
+	// 			]}
+	// 		>
+	// 			{inputs.map((input) =>
+	// 				input.onInputRender ? (
+	// 					input.onInputRender({
+	// 						value: dataForDelete.current?.[input.name],
+	// 						onChange: () => {},
+	// 						isDelete: true,
+	// 					})
+	// 				) : (
+	// 					<Input
+	// 						key={input.name}
+	// 						type={input.type}
+	// 						formControl={{
+	// 							label: input.label,
+	// 						}}
+	// 						value={dataForDelete.current?.[input.name]}
+	// 					/>
+	// 				)
+	// 			)}
+	// 		</Modal>
+	// 	)}
 
-			{isLoading ? (
-				<Loading className="h-screen flex justify-center items-center" />
-			) : (
-				<>
-					{!onlyList && (
-						<Box className="my-8 text-end">
-							<Button onClick={() => setShowModalCreateOrUpdate(true)}>
-								<Box className="flex flex-row items-center">
-									<PlusIcon width={24} />{' '}
-									<Typography className="pl-2">{t(`crud.${name}.action.add`)}</Typography>
-								</Box>
-							</Button>
-						</Box>
-					)}
-					<Table
-						rowId={(item) => item[inputIdentifier]}
-						columns={[
-							...tableItems,
-							// options are fixed
-							{
-								id: 'options',
-								head: () => <Typography>{t(`crud.${name}.action.options`)}</Typography>,
-								body: (item) =>
-									!onlyList ? (
-										<Box className="flex flex-row">
-											<Button appearance="secondary" onClick={() => handleOnClickEdit(item)}>
-												<Box className="flex flex-row items-center">
-													<PencilIcon width={16} />{' '}
-													<Typography className="pl-2">
-														{t(`crud.${name}.action.edit`)}
-													</Typography>
-												</Box>
-											</Button>
+	// 	<Box className="mb-8">
+	// 		<Typography as="h1" className="font-bold text-xl">
+	// 			{t(`crud.${name}.title`)}
+	// 		</Typography>
+	// 	</Box>
 
-											<Box className="ml-4">
-												<Button appearance="accent" onClick={() => handleOnClickDelete(item)}>
-													<Box className="flex flex-row items-center">
-														<TrashIcon width={16} />{' '}
-														<Typography className="pl-2">
-															{t(`crud.${name}.action.delete`)}
-														</Typography>
-													</Box>
-												</Button>
-											</Box>
-										</Box>
-									) : (
-										''
-									),
-								foot: () => <Typography>{t(`crud.${name}.action.option`)}</Typography>,
-							},
-						]}
-						items={list || []}
-					/>
-				</>
-			)}
-		</Box>
-	);
+	// 	{isLoading ? (
+	// 		<Loading className="h-screen flex justify-center items-center" />
+	// 	) : (
+	// 		<>
+	// 			{!onlyList && (
+	// 				<Box className="my-8 text-end">
+	// 					<Button onClick={() => setShowModalCreateOrUpdate(true)}>
+	// 						<Box className="flex flex-row items-center">
+	// 							<PlusIcon width={24} />{' '}
+	// 							<Typography className="pl-2">{t(`crud.${name}.action.add`)}</Typography>
+	// 						</Box>
+	// 					</Button>
+	// 				</Box>
+	// 			)}
+	// 			<Table
+	// 				rowId={(item) => item[inputIdentifier]}
+	// 				columns={[
+	// 					...tableItems,
+	// 					// options are fixed
+	// 					{
+	// 						id: 'options',
+	// 						head: () => <Typography>{t(`crud.${name}.action.options`)}</Typography>,
+	// 						body: (item) =>
+	// 							!onlyList ? (
+	// 								<Box className="flex flex-row">
+	// 									<Button appearance="secondary" onClick={() => handleOnClickEdit(item)}>
+	// 										<Box className="flex flex-row items-center">
+	// 											<PencilIcon width={16} />{' '}
+	// 											<Typography className="pl-2">
+	// 												{t(`crud.${name}.action.edit`)}
+	// 											</Typography>
+	// 										</Box>
+	// 									</Button>
+
+	// 									<Box className="ml-4">
+	// 										<Button appearance="accent" onClick={() => handleOnClickDelete(item)}>
+	// 											<Box className="flex flex-row items-center">
+	// 												<TrashIcon width={16} />{' '}
+	// 												<Typography className="pl-2">
+	// 													{t(`crud.${name}.action.delete`)}
+	// 												</Typography>
+	// 											</Box>
+	// 										</Button>
+	// 									</Box>
+	// 								</Box>
+	// 							) : (
+	// 								''
+	// 							),
+	// 						foot: () => <Typography>{t(`crud.${name}.action.option`)}</Typography>,
+	// 					},
+	// 				]}
+	// 				items={list || []}
+	// 			/>
+	// 		</>
+	// 	)}
+	// </Box>
+	// );
 };
 
 export interface CrudCreateOrUpdateModalProps {
@@ -266,6 +272,11 @@ export const CrudCreateOrUpdateModal: React.FC<CrudCreateOrUpdateModalProps> = (
 			onExit();
 		}
 	};
+
+	// TODO: refine code
+	const Modal: any = () => <></>;
+	const Box: any = () => <></>;
+	const Input: any = () => <></>;
 
 	return (
 		<Modal

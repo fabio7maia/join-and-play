@@ -2,8 +2,6 @@
 
 import React from 'react';
 
-import { Typography } from 'react-xp-ui';
-
 import { Crud } from '@components/crud.client';
 import { Loading } from '@components/loading';
 import { useI18n } from '@hooks';

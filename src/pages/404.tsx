@@ -1,7 +1,6 @@
 import React from 'react';
 
 import 'normalize.css';
-import '../styles/globals.css';
 
 import { Loading } from '@components/loading';
 

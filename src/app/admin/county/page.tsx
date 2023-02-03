@@ -2,8 +2,6 @@
 
 import React from 'react';
 
-import { Typography } from 'react-xp-ui';
-
 import { Crud } from '@components/crud.client';
 import { Loading } from '@components/loading';
 import { useI18n } from '@hooks';
@@ -65,7 +63,9 @@ export default function CountyManagement() {
 						return innerLoading ? (
 							<Loading className="flex justify-center items-center" height={70} width={70} />
 						) : (
-							<Typography>{district?.description}</Typography>
+							<></>
+							// TODO: refine code
+							// <Typography>{district?.description}</Typography>
 						);
 					},
 					onInputRender: (obj): React.ReactNode => {

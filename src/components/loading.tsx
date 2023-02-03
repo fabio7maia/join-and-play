@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Lottie from 'react-lottie';
-import { Box } from 'react-xp-ui';
 
 import { animations } from '@assets';
 
@@ -22,8 +21,9 @@ export interface LoadingProps {
 
 export const Loading: React.FC<LoadingProps> = ({ width = 200, height = 200, className }) => {
 	return (
-		<Box className={className}>
+		// TODO: refine code
+		<div>
 			<Lottie options={defaultOptions} height={height} width={width} isClickToPauseDisabled />
-		</Box>
+		</div>
 	);
 };

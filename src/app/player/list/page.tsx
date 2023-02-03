@@ -3,7 +3,6 @@
 import React from 'react';
 
 import { useRouter } from 'next/navigation';
-import { Button, Table } from 'react-xp-ui';
 import { User } from 'src/trpc/server-rsc/trpc.getUser';
 
 import { useLogger } from '@hooks';
@@ -28,7 +27,8 @@ export default function PlayerListPage() {
 		<div className="flex flex-col w-screen p-4">
 			<div className="text-2xl font-bold my-16">List of your joined games</div>
 
-			<Table
+			{/* TODO: refine code */}
+			{/* <Table
 				rowId={(item) => item['id']}
 				columns={[
 					{
@@ -45,7 +45,7 @@ export default function PlayerListPage() {
 					},
 				]}
 				items={games.data || []}
-			/>
+			/> */}
 			<div className="my-16" />
 		</div>
 	);

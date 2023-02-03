@@ -6,8 +6,7 @@ This is a source code of Join and Play website.
 -   [x] Prisma (https://www.prisma.io)
 -   [x] tRPC (https://trpc.io)
 -   [x] NextAuth.js (https://next-auth.js.org)
--   [x] Tailwind css (https://tailwindcss.com)
--   [x] daisyUI (https://daisyui.com)
+-   [x] Chakra UI (https://chakra-ui.com/)
 -   [x] husky (https://github.com/typicode/husky)
 -   [x] much more ...
 

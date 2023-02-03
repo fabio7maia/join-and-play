@@ -20,6 +20,10 @@
 		"git:pre-push": "npm run build && npm run test:coverage"
 	},
 	"dependencies": {
+		"@chakra-ui/icons": "^2.0.17",
+		"@chakra-ui/react": "^2.4.9",
+		"@emotion/react": "^11.10.5",
+		"@emotion/styled": "^11.10.5",
 		"@heroicons/react": "^2.0.12",
 		"@next-auth/prisma-adapter": "^1.0.5",
 		"@prisma/client": "^4.9.0",
@@ -28,9 +32,8 @@
 		"@trpc/next": "^10.0.0-rc.3",
 		"@trpc/react-query": "^10.0.0-rc.3",
 		"@trpc/server": "^10.0.0-rc.3",
-		"clsx": "^1.2.1",
-		"daisyui": "^2.33.0",
 		"dot-object": "^2.1.4",
+		"framer-motion": "^9.0.1",
 		"ioredis": "^5.2.3",
 		"next": "13.1.5",
 		"next-auth": "^4.15.0",
@@ -38,9 +41,7 @@
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"react-lottie": "^1.2.3",
-		"react-xp-ui": "^1.4.0",
 		"superjson": "^1.11.0",
-		"tailwind-merge": "^1.7.0",
 		"zod": "^3.19.1"
 	},
 	"devDependencies": {
@@ -80,7 +81,6 @@
 		"postcss-loader": "^7.0.1",
 		"prettier": "^2.7.1",
 		"prisma": "^4.9.0",
-		"tailwindcss": "^3.2.1",
 		"typescript": "4.8.4"
 	}
 }

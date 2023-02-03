@@ -1,8 +1,8 @@
 import { TrpcClientProvider } from '../trpc/trpcClient';
 
 import 'normalize.css';
-import '../styles/globals.css';
 
+import { ChakraProviderClientSide } from '@components/chakraProvider.client';
 import Footer from '@components/footer';
 import NavBar from '@components/navBar.client';
 
@@ -23,11 +23,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 					></script>
 				</head>
 				<body>
-					<div className="flex flex-col h-screen">
+					<ChakraProviderClientSide>
 						<NavBar />
 						{children}
 						<Footer />
-					</div>
+					</ChakraProviderClientSide>
 				</body>
 			</html>
 		</TrpcClientProvider>

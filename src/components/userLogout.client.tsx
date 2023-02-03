@@ -1,8 +1,9 @@
 'use client';
 
 import { signOut } from 'next-auth/react';
-import { Button } from 'react-xp-ui';
+
+import { Button } from '@chakra-ui/react';
 
 export const UserLogout: React.FC = () => {
-	return <Button onClick={signOut}>Logout</Button>;
+	return <Button onClick={() => signOut()}>Logout</Button>;
 };
