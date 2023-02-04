@@ -2,10 +2,12 @@
 
 import React from 'react';
 
-import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/solid';
+import { Button, Input, Stack, Text } from '@chakra-ui/react';
 import { useI18n } from '@hooks';
 
 import { Loading } from './loading';
+import { Modal } from './modal.client';
+import { Table } from './table.client';
 
 export interface CrudInputProps {
 	name: string;
@@ -83,14 +85,11 @@ export const Crud: React.FC<CrudProps> = (props) => {
 		setShowModalDelete(false);
 	};
 
-	// TODO: refine code
-	const Typography: React.FC<React.PropsWithChildren> = () => <></>;
-
 	const tableItems = inputs
 		.filter((i) => (i.visibleOnList !== undefined ? i.visibleOnList : true))
 		.map((input) => ({
 			id: input.name,
-			head: () => <Typography>{input.label}</Typography>,
+			head: input.label,
 			body: (item: any) => {
 				if (input.onTableRender) {
 					return input.onTableRender(item);
@@ -102,124 +101,148 @@ export const Crud: React.FC<CrudProps> = (props) => {
 				if (isBooleanType) {
 					return <input type="checkbox" checked={value} disabled />;
 				} else {
-					return <Typography>{value}</Typography>;
+					return <Text>{value}</Text>;
 				}
 			},
-			foot: () => <Typography>{input.label}</Typography>,
 		}));
 
 	const inputIdentifier = inputs.filter((i) => i.isIdentifier)?.[0].name;
 
-	return null;
+	return (
+		<>
+			{showModalDelete && (
+				<Modal
+					title={t(`crud.${name}.modal.delete.title`)}
+					buttons={[
+						{
+							colorScheme: 'gray',
+							children: <Text>{t(`crud.${name}.modal.delete.button.cancel`)}</Text>,
+							onClick: () => setShowModalDelete(false),
+						},
+						{
+							colorScheme: 'blue',
+							children: <Text>{t(`crud.${name}.modal.delete.button.confirm`)}</Text>,
+							onClick: handleOnClickConfirmDelete,
+						},
+					]}
+				>
+					{inputs.map((input) =>
+						input.onInputRender ? (
+							input.onInputRender({
+								value: dataForDelete.current?.[input.name],
+								onChange: () => {},
+								isDelete: true,
+							})
+						) : (
+							<Input
+								key={input.name}
+								type={input.type}
+								value={dataForDelete.current?.[input.name]}
+								readOnly
+							/>
+						)
+					)}
+				</Modal>
+			)}
+			{showModalCreateOrUpdate && (
+				<CrudCreateOrUpdateModal {...props} onExit={handleOnExit} dataForEdit={dataForEdit.current} />
+			)}
+			<Stack direction="row" spacing={4} align="center" justifyContent="space-between">
+				<Text fontSize="3xl">{t(`crud.${name}.title`)}</Text>
 
-	// return (
-	{
-		/* TODO: refine code */
-	}
-	// <Box>
-	// 	{showModalCreateOrUpdate && (
-	// 		<CrudCreateOrUpdateModal {...props} onExit={handleOnExit} dataForEdit={dataForEdit.current} />
-	// 	)}
-	// 	{showModalDelete && (
-	// 		<Modal
-	// 			title={t(`crud.${name}.modal.delete.title`)}
-	// 			buttons={[
-	// 				{
-	// 					appearance: 'accent',
-	// 					children: t(`crud.${name}.modal.delete.button.cancel`),
-	// 					onClick: () => setShowModalDelete(false),
-	// 				},
-	// 				{
-	// 					appearance: 'primary',
-	// 					children: t(`crud.${name}.modal.delete.button.confirm`),
-	// 					onClick: handleOnClickConfirmDelete,
-	// 				},
-	// 			]}
-	// 		>
-	// 			{inputs.map((input) =>
-	// 				input.onInputRender ? (
-	// 					input.onInputRender({
-	// 						value: dataForDelete.current?.[input.name],
-	// 						onChange: () => {},
-	// 						isDelete: true,
-	// 					})
-	// 				) : (
-	// 					<Input
-	// 						key={input.name}
-	// 						type={input.type}
-	// 						formControl={{
-	// 							label: input.label,
-	// 						}}
-	// 						value={dataForDelete.current?.[input.name]}
-	// 					/>
-	// 				)
-	// 			)}
-	// 		</Modal>
-	// 	)}
+				{!onlyList && (
+					<Button colorScheme="blue" variant="solid" onClick={() => setShowModalCreateOrUpdate(true)}>
+						<Text>{t(`crud.${name}.action.add`)}</Text>
+					</Button>
+				)}
+			</Stack>
+			{isLoading ? (
+				<Loading />
+			) : (
+				<Stack marginTop="20px" spacing={8}>
+					<Table
+						rowId={(item) => item[inputIdentifier]}
+						columns={[
+							...tableItems,
+							// options are fixed
+							// {
+							// 	id: 'options',
+							// 	head: () => <Typography>{t(`crud.${name}.action.options`)}</Typography>,
+							// 	body: (item) =>
+							// 		!onlyList ? (
+							// 			<Box className="flex flex-row">
+							// 				<Button appearance="secondary" onClick={() => handleOnClickEdit(item)}>
+							// 					<Box className="flex flex-row items-center">
+							// 						<PencilIcon width={16} />{' '}
+							// 						<Typography className="pl-2">
+							// 							{t(`crud.${name}.action.edit`)}
+							// 						</Typography>
+							// 					</Box>
+							// 				</Button>
 
-	// 	<Box className="mb-8">
-	// 		<Typography as="h1" className="font-bold text-xl">
-	// 			{t(`crud.${name}.title`)}
-	// 		</Typography>
-	// 	</Box>
+							// 				<Box className="ml-4">
+							// 					<Button appearance="accent" onClick={() => handleOnClickDelete(item)}>
+							// 						<Box className="flex flex-row items-center">
+							// 							<TrashIcon width={16} />{' '}
+							// 							<Typography className="pl-2">
+							// 								{t(`crud.${name}.action.delete`)}
+							// 							</Typography>
+							// 						</Box>
+							// 					</Button>
+							// 				</Box>
+							// 			</Box>
+							// 		) : (
+							// 			''
+							// 		),
+							// 	foot: () => <Typography>{t(`crud.${name}.action.option`)}</Typography>,
+							// },
+						]}
+						items={list || []}
+					/>
+				</Stack>
+			)}
+		</>
+	);
 
-	// 	{isLoading ? (
-	// 		<Loading className="h-screen flex justify-center items-center" />
-	// 	) : (
-	// 		<>
-	// 			{!onlyList && (
-	// 				<Box className="my-8 text-end">
-	// 					<Button onClick={() => setShowModalCreateOrUpdate(true)}>
-	// 						<Box className="flex flex-row items-center">
-	// 							<PlusIcon width={24} />{' '}
-	// 							<Typography className="pl-2">{t(`crud.${name}.action.add`)}</Typography>
-	// 						</Box>
-	// 					</Button>
-	// 				</Box>
-	// 			)}
-	// 			<Table
-	// 				rowId={(item) => item[inputIdentifier]}
-	// 				columns={[
-	// 					...tableItems,
-	// 					// options are fixed
-	// 					{
-	// 						id: 'options',
-	// 						head: () => <Typography>{t(`crud.${name}.action.options`)}</Typography>,
-	// 						body: (item) =>
-	// 							!onlyList ? (
-	// 								<Box className="flex flex-row">
-	// 									<Button appearance="secondary" onClick={() => handleOnClickEdit(item)}>
-	// 										<Box className="flex flex-row items-center">
-	// 											<PencilIcon width={16} />{' '}
-	// 											<Typography className="pl-2">
-	// 												{t(`crud.${name}.action.edit`)}
-	// 											</Typography>
-	// 										</Box>
-	// 									</Button>
+	// <Table
+	// 	rowId={(item) => item[inputIdentifier]}
+	// 	columns={[
+	// 		...tableItems,
+	// 		// options are fixed
+	// 		{
+	// 			id: 'options',
+	// 			head: () => <Typography>{t(`crud.${name}.action.options`)}</Typography>,
+	// 			body: (item) =>
+	// 				!onlyList ? (
+	// 					<Box className="flex flex-row">
+	// 						<Button appearance="secondary" onClick={() => handleOnClickEdit(item)}>
+	// 							<Box className="flex flex-row items-center">
+	// 								<PencilIcon width={16} />{' '}
+	// 								<Typography className="pl-2">
+	// 									{t(`crud.${name}.action.edit`)}
+	// 								</Typography>
+	// 							</Box>
+	// 						</Button>
 
-	// 									<Box className="ml-4">
-	// 										<Button appearance="accent" onClick={() => handleOnClickDelete(item)}>
-	// 											<Box className="flex flex-row items-center">
-	// 												<TrashIcon width={16} />{' '}
-	// 												<Typography className="pl-2">
-	// 													{t(`crud.${name}.action.delete`)}
-	// 												</Typography>
-	// 											</Box>
-	// 										</Button>
-	// 									</Box>
+	// 						<Box className="ml-4">
+	// 							<Button appearance="accent" onClick={() => handleOnClickDelete(item)}>
+	// 								<Box className="flex flex-row items-center">
+	// 									<TrashIcon width={16} />{' '}
+	// 									<Typography className="pl-2">
+	// 										{t(`crud.${name}.action.delete`)}
+	// 									</Typography>
 	// 								</Box>
-	// 							) : (
-	// 								''
-	// 							),
-	// 						foot: () => <Typography>{t(`crud.${name}.action.option`)}</Typography>,
-	// 					},
-	// 				]}
-	// 				items={list || []}
-	// 			/>
-	// 		</>
-	// 	)}
-	// </Box>
-	// );
+	// 							</Button>
+	// 						</Box>
+	// 					</Box>
+	// 				) : (
+	// 					''
+	// 				),
+	// 			foot: () => <Typography>{t(`crud.${name}.action.option`)}</Typography>,
+	// 		},
+	// 	]}
+	// 	items={list || []}
+	// />
 };
 
 export interface CrudCreateOrUpdateModalProps {
@@ -273,22 +296,17 @@ export const CrudCreateOrUpdateModal: React.FC<CrudCreateOrUpdateModalProps> = (
 		}
 	};
 
-	// TODO: refine code
-	const Modal: any = () => <></>;
-	const Box: any = () => <></>;
-	const Input: any = () => <></>;
-
 	return (
 		<Modal
 			title={t(`crud.${name}.modal.createOrUpdate.title`)}
 			buttons={[
 				{
-					appearance: 'accent',
+					colorScheme: 'gray',
 					children: t(`crud.${name}.modal.createOrUpdate.button.cancel`),
 					onClick: onExit,
 				},
 				{
-					appearance: 'primary',
+					colorScheme: 'blue',
 					children: t(`crud.${name}.modal.createOrUpdate.button.confirm`),
 					onClick: handleOnClickSave,
 				},
@@ -300,7 +318,7 @@ export const CrudCreateOrUpdateModal: React.FC<CrudCreateOrUpdateModalProps> = (
 					?.map((input) => {
 						const { name, label, optional = false, onInputRender } = input;
 						return (
-							<Box className="pt-6" key={name}>
+							<Stack key={name}>
 								{onInputRender ? (
 									onInputRender({
 										value: object?.[name],
@@ -311,22 +329,24 @@ export const CrudCreateOrUpdateModal: React.FC<CrudCreateOrUpdateModalProps> = (
 											})),
 									})
 								) : (
-									<Input
-										type={input.type}
-										value={object?.[name]}
-										onChange={(v: any) =>
-											setObject((prevValue: any) => ({
-												...prevValue,
-												[name]: v,
-											}))
-										}
-										formControl={{
-											label: label,
-										}}
-										required={!optional}
-									/>
+									<>
+										<Text mb="8px">{label}</Text>
+										<Input
+											type={input.type}
+											value={object?.[name]}
+											placeholder={label}
+											name={name}
+											onChange={(v) => {
+												setObject((prevValue: any) => ({
+													...prevValue,
+													[name]: v.target.value,
+												}));
+											}}
+											required={!optional}
+										/>
+									</>
 								)}
-							</Box>
+							</Stack>
 						);
 					})}
 			</form>

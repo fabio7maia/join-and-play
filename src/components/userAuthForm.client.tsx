@@ -4,7 +4,9 @@ import React from 'react';
 
 import { Session } from 'next-auth';
 import { signIn } from 'next-auth/react';
+import { SiGithub, SiGoogle } from 'react-icons/si';
 
+import { Box, Button, Center, Stack, Text } from '@chakra-ui/react';
 import { useI18n } from '@hooks';
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -14,7 +16,25 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
 export function UserAuthForm({ className, session, ...props }: UserAuthFormProps) {
 	const { t } = useI18n();
 
-	return null;
+	return (
+		<>
+			<Center p={8}>
+				<Stack spacing={2} align={'center'} maxW={'md'} w={'full'}>
+					<Button w={'full'} colorScheme={'gray'} leftIcon={<SiGithub />} onClick={() => signIn('github')}>
+						<Center>
+							<Text>Login With Github</Text>
+						</Center>
+					</Button>
+
+					<Button w={'full'} colorScheme={'blue'} leftIcon={<SiGoogle />} onClick={() => signIn('google')}>
+						<Center>
+							<Text>Login With Google</Text>
+						</Center>
+					</Button>
+				</Stack>
+			</Center>
+		</>
+	);
 
 	// TODO: refine code
 	// const [email, setEmail] = React.useState<StringNumber>('');
